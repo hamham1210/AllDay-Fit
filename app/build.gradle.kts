@@ -7,6 +7,11 @@ android {
     namespace = "com.example.alldayfit"
     compileSdk = 33
 
+    buildFeatures {
+        // 뷰 바인딩 활성화
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.alldayfit"
         minSdk = 27
@@ -33,10 +38,7 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    buildFeatures {
-        // 뷰 바인딩 활성화
-        viewBinding = true
-    }
+
 }
 
 dependencies {
