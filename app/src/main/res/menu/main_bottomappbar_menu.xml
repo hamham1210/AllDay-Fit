@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/app_bar_com"
+        android:icon="@drawable/ic_commity"
+        android:title="커뮤니티" />
+
+    <item
+        android:id="@+id/app_bar_diet"
+        android:icon="@drawable/ic_diet"
+        android:title="식단기록" />
+    <item
+        android:id="@+id/app_bar_mypage"
+        android:icon="@drawable/ic_mypage"
+        android:title="운동상태" />
+
+    <item
+        android:id="@+id/app_bar_menu"
+        android:icon="@drawable/ic_menu"
+        android:title="환경설정" />
+</menu>
