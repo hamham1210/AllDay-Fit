@@ -7,4 +7,15 @@
     <string name="week_mode">Week mode</string>
 
     <string name="community_fab_add_post">내 게시물 추가</string>
+    <string name="exercise_record">운동기록</string>
+    <string name="exercise_time">exercise\n Time</string>
+    <string name="slogan">Make your rootine</string>
+    <string name="commity">커뮤니티</string>
+    <string name="diet_record">식단기록</string>
+    <string name="main_page">메인페이지</string>
+    <string name="exercise_sit">운동상태</string>
+    <string name="preferences">환경설정</string>
+    <string name="weight">weight</string>
+    <string name="bmi">bmi</string>
+    <string name="user_condition">의 상태</string>
 </resources>
