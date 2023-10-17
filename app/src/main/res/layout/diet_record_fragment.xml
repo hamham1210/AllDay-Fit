@@ -104,7 +104,7 @@
             app:layout_constraintTop_toBottomOf="@id/diet_record_txt">
 
             <include
-                android:id="@+id/breakfast_view"
+                android:id="@+id/dinner_view"
                 layout="@layout/diet_record_meal_item"
                 app:layout_constraintEnd_toStartOf="@id/lunch_view"
                 app:layout_constraintStart_toStartOf="parent"
@@ -116,7 +116,7 @@
                 android:layout_weight="1" />
 
             <include
-                android:id="@+id/lunch_view"
+                android:id="@+id/snack_view"
                 layout="@layout/diet_record_meal_item"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/breakfast_view"
