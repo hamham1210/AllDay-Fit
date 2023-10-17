@@ -29,4 +29,5 @@
     <string name="weight">weight</string>
     <string name="bmi">bmi</string>
     <string name="user_condition">의 상태</string>
+    <string name="subtract_day_btn_desc">select the day before</string>
 </resources>

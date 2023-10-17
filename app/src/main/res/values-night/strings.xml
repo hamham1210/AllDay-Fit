@@ -16,4 +16,5 @@
     <string name="daily_intake">섭취량</string>
     <string name="daily_recommended_amount">권장량</string>
     <string name="diet_record">식단 기록</string>
+    <string name="subtract_day_btn_desc">select the day before</string>
 </resources>
