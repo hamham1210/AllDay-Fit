@@ -53,4 +53,5 @@
     <string name="calorie_consumption">CALORIE CONSUMPTION</string>
     <string name="exercise_status_week_goal">주간목표</string>
     <string name="exercise_status_user_state">나의 운동 상태</string>
+    <string name="dark_mode">다크모드</string>
 </resources>
