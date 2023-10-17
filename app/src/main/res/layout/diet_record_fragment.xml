@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
+        android:id="@+id/prev_date_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
@@ -29,6 +30,7 @@
         app:layout_constraintTop_toTopOf="@id/date_txt" />
 
     <ImageButton
+        android:id="@+id/next_date_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -176,19 +178,19 @@
         </LinearLayout>
 
         <include
-            android:id="@+id/carbohydrates"
+            android:id="@+id/carbohydrates_view"
             layout="@layout/diet_record_nutritional_analysis_item" />
 
         <include
-            android:id="@+id/protein"
+            android:id="@+id/protein_view"
             layout="@layout/diet_record_nutritional_analysis_item" />
 
         <include
-            android:id="@+id/fat"
+            android:id="@+id/fat_view"
             layout="@layout/diet_record_nutritional_analysis_item" />
 
         <include
-            android:id="@+id/calories"
+            android:id="@+id/calories_view"
             layout="@layout/diet_record_nutritional_analysis_item" />
     </LinearLayout>
 
