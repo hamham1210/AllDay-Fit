@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.alldayfit"
-    compileSdk = 33
+    compileSdk = 34
 
     buildFeatures {
         // 뷰 바인딩 활성화
