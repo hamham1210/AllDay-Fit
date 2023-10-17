@@ -10,7 +10,7 @@
         android:layout_width="27dp"
         android:layout_height="27dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_user2" />
@@ -20,9 +20,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="44dp"
-        android:textSize="16dp"
+        android:layout_marginTop="25dp"
         android:text="쫄튀"
+        android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,19 +30,20 @@
         android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="13dp"
         android:text="작성일 : 2023.11.20"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_nickname"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_nickname" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="18dp"
         android:text="글제목"
         android:textSize="24dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +53,7 @@
         android:id="@+id/tv_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="4dp"
         android:text="글의 내용을 적어두기"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="@+id/tv_title"
