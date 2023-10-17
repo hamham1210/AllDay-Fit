@@ -18,28 +18,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:layout_width="20dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:background="@color/none"
         android:contentDescription="@string/subtract_day_btn_desc"
-        android:padding="10dp"
-        android:src="@drawable/ic_back"
+        android:src="@drawable/ic_prev"
         app:layout_constraintBottom_toBottomOf="@id/date_txt"
-        app:layout_constraintDimensionRatio="13:20"
         app:layout_constraintEnd_toStartOf="@id/date_txt"
         app:layout_constraintTop_toTopOf="@id/date_txt" />
 
     <ImageButton
-        android:layout_width="20dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:background="@color/none"
         android:contentDescription="@string/subtract_day_btn_desc"
-        android:padding="10dp"
-        android:src="@drawable/ic_back"
+        android:src="@drawable/ic_next"
         app:layout_constraintBottom_toBottomOf="@id/date_txt"
-        app:layout_constraintDimensionRatio="13:20"
         app:layout_constraintStart_toEndOf="@id/date_txt"
         app:layout_constraintTop_toTopOf="@id/date_txt" />
 
