@@ -40,4 +40,11 @@
     <string name="daily_recommended_amount">권장량</string>
     <string name="diet_record">식단 기록</string>
     <string name="subtract_day_btn_desc">select the day before</string>
+    <string name="weight">WEIGHT</string>
+    <string name="height">HEIGHT</string>
+    <string name="bmi">BMI</string>
+    <string name="exercise_time">EXERCISE TIME</string>
+    <string name="calorie_consumption">CALORIE CONSUMPTION</string>
+    <string name="exercise_status_week_goal">주간목표</string>
+    <string name="exercise_status_user_state">나의 운동 상태</string>
 </resources>
