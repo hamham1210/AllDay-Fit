@@ -6,7 +6,8 @@
     android:orientation="vertical"
     android:paddingHorizontal="10dp"
     android:paddingTop="15dp"
-    tools:context=".settings.ui.SettingMainFragment">
+    android:background="@color/light_blue"
+    tools:context=".Settings.SettingAppNotifiFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:text="@string/all_app_notifi"
+            android:text="@string/setting_all_app_notifi"
             android:textSize="20sp" />
 
         <View
@@ -29,10 +30,16 @@
         <Switch
             android:id="@+id/all_app_notifi"
             android:layout_marginEnd="20dp"
-            android:layout_width="50dp"
-            android:layout_height="25dp"/>
+            android:layout_width="70dp"
+            android:layout_height="50dp"/>
 
     </LinearLayout>
+
+    <View
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:text="@string/exer_notifi"
+            android:text="@string/setting_exer_notifi"
             android:textSize="20sp" />
 
         <View
@@ -55,10 +62,16 @@
         <Switch
             android:id="@+id/exer_notifi"
             android:layout_marginEnd="20dp"
-            android:layout_width="50dp"
-            android:layout_height="25dp"/>
+            android:layout_width="70dp"
+            android:layout_height="50dp"/>
 
     </LinearLayout>
+
+    <View
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:text="@string/comm_notifi"
+            android:text="@string/setting_comm_notifi"
             android:textSize="20sp" />
 
         <View
@@ -81,8 +94,14 @@
         <Switch
             android:id="@+id/comm_notifi"
             android:layout_marginEnd="20dp"
-            android:layout_width="50dp"
-            android:layout_height="25dp"/>
+            android:layout_width="70dp"
+            android:layout_height="50dp"/>
 
     </LinearLayout>
+
+    <View
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
 </LinearLayout>
