@@ -1,4 +1,4 @@
-package com.example.alldayfit
+package com.example.alldayfit.exercisestatus
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

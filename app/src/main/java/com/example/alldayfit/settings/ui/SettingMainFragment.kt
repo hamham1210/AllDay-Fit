@@ -1,25 +1,22 @@
-package com.example.alldayfit
+package com.example.alldayfit.settings.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.alldayfit.databinding.CalendarFragmentBinding
-import com.example.alldayfit.databinding.CommunityHomeFragmentBinding
+import com.example.alldayfit.databinding.SettingMainFragmentBinding
 
-class CommunityHomeFragment : Fragment() {
-    private var _binding: CommunityHomeFragmentBinding? = null
+class SettingMainFragment : Fragment() {
+    private var _binding: SettingMainFragmentBinding? = null
     private val binding get() = _binding!!
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = CommunityHomeFragmentBinding.inflate(inflater,container,false)
-        val view = binding.root
-        return view
+        _binding = SettingMainFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onDestroyView() {

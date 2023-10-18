@@ -1,4 +1,4 @@
-package com.example.alldayfit;
+package com.example.alldayfit.exercisestatus;
 
 public class ExerciseStatusDailyEditDialog {
 }

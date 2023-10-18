@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingTop="15dp"
     android:padding="10dp"
-    tools:context=".Settings.SettingGuideFragment">
+    tools:context=".settings.ui.SettingGuideFragment">
 
     <TextView
         android:id="@+id/tv_guide"

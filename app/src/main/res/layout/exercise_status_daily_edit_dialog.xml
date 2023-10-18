@@ -5,7 +5,7 @@
     android:layout_width="360dp"
     android:layout_height="510dp"
     android:background="@color/blue"
-    tools:context=".ExerciseStatusDailyEditDialog">
+    tools:context=".exercisestatus.ExerciseStatusDailyEditDialog">
 
     <TextView
         android:id="@+id/date_txt"
