@@ -1,23 +1,63 @@
 <resources>
     <string name="app_name">AllDayFit</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="diet_record_breakfast">아침</string>
+    <string name="diet_record_lunch">점심</string>
+    <string name="diet_record_dinner">저녁</string>
+    <string name="diet_record_snack">간식</string>
+    <string name="carbohydrates">탄수화물</string>
+    <string name="protein">단백질</string>
+    <string name="fat">지방</string>
+    <string name="calories">칼로리</string>
+    <string name="daily_nutritional_analysis">하루 섭취 영양</string>
+    <string name="daily_intake">섭취량</string>
+    <string name="daily_recommended_amount">권장량</string>
+    <string name="diet_record">식단 기록</string>
     <string name="month_record">월간 기록</string>
     <string name="week_mode">Week mode</string>
-
     <string name="community_fab_add_post">내 게시물 추가</string>
     <string name="exercise_record">운동기록</string>
     <string name="exercise_time">exercise\n Time</string>
     <string name="slogan">Make your rootine</string>
     <string name="commity">커뮤니티</string>
-    <string name="diet_record">식단기록</string>
     <string name="main_page">메인페이지</string>
     <string name="exercise_sit">운동상태</string>
     <string name="preferences">환경설정</string>
     <string name="weight">weight</string>
     <string name="bmi">bmi</string>
     <string name="user_condition">의 상태</string>
+    <string name="subtract_day_btn_desc">select the day before</string>
+    <string name="weight">WEIGHT</string>
+    <string name="height">HEIGHT</string>
+    <string name="bmi">BMI</string>
+    <string name="exercise_time">EXERCISE TIME</string>
+    <string name="calorie_consumption">CALORIE CONSUMPTION</string>
+    <string name="exercise_status_week_goal">주간목표</string>
+    <string name="exercise_status_user_state">나의 운동 상태</string>
+    <string name="dark_mode">다크모드</string>
+    <string name="app_noti">앱 알림 설정</string>
+    <string name="guide">이용가이드</string>
+    <string name="notice">공지사항</string>
+    <string name="mod_user">유저정보 수정</string>
+    <string name="Inbody">Inbody 연동 여부</string>
+    <string name="all_app_notifi">앱 전체 알림</string>
+    <string name="exer_notifi">운동 알림</string>
+    <string name="comm_notifi">커뮤니티 알림</string>
     <string name="community_btn_amend">수정</string>
     <string name="community_btn_delete">삭제</string>
     <string name="community_tv_date">작성일 : </string>

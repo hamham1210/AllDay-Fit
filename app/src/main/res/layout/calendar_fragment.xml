@@ -8,7 +8,7 @@
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
-    tools:context=".CalendarFragment">
+    tools:context=".calendar.CalendarFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/exTwoAppBarLayout"
@@ -38,7 +38,7 @@
         android:layout_height="match_parent"
         app:cv_dayViewResource="@layout/calendar_day"
         app:cv_monthHeaderResource="@layout/calendar_header"
-        app:cv_scrollPaged="false"
-        app:cv_orientation="vertical" />
+        app:cv_orientation="vertical"
+        app:cv_scrollPaged="false" />
 
 </LinearLayout>
