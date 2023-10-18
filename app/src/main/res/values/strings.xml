@@ -54,4 +54,12 @@
     <string name="exercise_status_week_goal">주간목표</string>
     <string name="exercise_status_user_state">나의 운동 상태</string>
     <string name="dark_mode">다크모드</string>
+    <string name="app_noti">앱 알림 설정</string>
+    <string name="guide">이용가이드</string>
+    <string name="notice">공지사항</string>
+    <string name="mod_user">유저정보 수정</string>
+    <string name="Inbody">Inbody 연동 여부</string>
+    <string name="all_app_notifi">앱 전체 알림</string>
+    <string name="exer_notifi">운동 알림</string>
+    <string name="comm_notifi">커뮤니티 알림</string>
 </resources>
