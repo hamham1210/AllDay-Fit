@@ -10,8 +10,14 @@ import com.example.alldayfit.databinding.SettingGuideFragmentBinding
 
 class SettingGuideFragment : Fragment() {
     private var _binding: SettingGuideFragmentBinding? = null
-    private val binding get() = _binding
+    private val binding get() = _binding!!
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.setting_guide_fragment, container, false)
+        _binding = SettingGuideFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

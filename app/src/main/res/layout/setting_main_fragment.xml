@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,7 +19,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
-            android:src="@drawable/darkmode" />
+            android:src="@drawable/darkmode"
+            android:contentDescription="@null" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,171 +35,165 @@
             android:layout_weight="1"/>
         
         <Switch
+            android:id="@+id/dark_switch"
             android:layout_marginEnd="20dp"
             android:layout_width="50dp"
             android:layout_height="25dp"/>
+
     </LinearLayout>
 
-    <FrameLayout
+    <LinearLayout
+        android:id="@+id/app_notifi_setting"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/dark"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:backgroundTint="@color/white"
-            android:gravity="center_vertical"
-            android:text="         다크 모드"
-            android:textColor="@color/black" />
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="35dp"
-            android:src="@drawable/darkmode" />
+            android:layout_marginStart="35dp"
+            android:src="@drawable/app_notifi_setting"
+            android:contentDescription="@null" />
 
-        <Switch
-            android:id="@+id/dark_switch"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="330dp" />
+            android:layout_marginStart="10dp"
+            android:text="@string/app_noti"
+            android:textSize="20sp" />
 
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/btn_app_noti"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:backgroundTint="@color/white"
-            android:gravity="center_vertical"
-            android:text="         앱 알림 설정"
-            android:textColor="@color/black" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
         <ImageView
+            android:contentDescription="@null"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="35dp"
-            android:src="@drawable/app_notifi_setting" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="340dp"
+            android:layout_marginEnd="20dp"
             android:src="@drawable/modify" />
 
-    </FrameLayout>
+    </LinearLayout>
 
-    <FrameLayout
+    <LinearLayout
+        android:id="@+id/setting_guide"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/btn_guide"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:backgroundTint="@color/white"
-            android:gravity="center_vertical"
-            android:text="         이용가이드"
-            android:textColor="@color/black" />
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="35dp"
-            android:src="@drawable/guide" />
-    </FrameLayout>
+            android:layout_marginStart="35dp"
+            android:src="@drawable/guide"
+            android:contentDescription="@null" />
 
-    <FrameLayout
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/guide"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/setting_notice"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/btn_notice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:backgroundTint="@color/white"
-            android:gravity="center_vertical"
-            android:text="         공지사항"
-            android:textColor="@color/black" />
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="35dp"
-            android:src="@drawable/notice" />
-    </FrameLayout>
+            android:layout_marginStart="35dp"
+            android:src="@drawable/notice"
+            android:contentDescription="@null" />
 
-    <FrameLayout
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/notice"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mod_user_info"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/btn_user_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:backgroundTint="@color/white"
-            android:gravity="center_vertical"
-            android:text="         유저정보 수정"
-            android:textColor="@color/black" />
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="35dp"
-            android:src="@drawable/mod_user_info" />
+            android:layout_marginStart="35dp"
+            android:src="@drawable/mod_user_info"
+            android:contentDescription="@null" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/mod_user"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
         <ImageView
+            android:contentDescription="@null"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="340dp"
+            android:layout_marginEnd="20dp"
             android:src="@drawable/modify" />
 
-    </FrameLayout>
+    </LinearLayout>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-        <Button
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:backgroundTint="@color/white"
-            android:gravity="center_vertical"
-            android:text="         Inbody 연동 여부"
-            android:textColor="@color/black" />
+            android:layout_marginStart="70dp"
+            android:text="@string/Inbody"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
         <Switch
             android:id="@+id/inbody_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="330dp" />
+            android:layout_marginEnd="20dp"
+            android:layout_width="50dp"
+            android:layout_height="25dp"/>
 
-    </FrameLayout>
+    </LinearLayout>
 
 </LinearLayout>

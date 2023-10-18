@@ -1,80 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Settings.SettingAppNotifiFragment">
+    android:paddingHorizontal="10dp"
+    android:paddingTop="15dp"
+    tools:context=".Settings.SettingMainFragment">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp">
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btn_all_noti"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:text="       앱 전체 알림"
-            android:textColor="@color/black"
-            android:gravity="center_vertical" />
-
-        <Switch
-            android:id="@+id/all_noti_switch"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="330dp"
-            android:layout_gravity="center_vertical" />
+            android:layout_marginStart="30dp"
+            android:text="@string/all_app_notifi"
+            android:textSize="20sp" />
 
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/btn_exer_noti"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:text="       운동 알림"
-            android:textColor="@color/black"
-            android:gravity="center_vertical" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
         <Switch
-            android:id="@+id/exer_noti_switch"
+            android:id="@+id/all_app_notifi"
+            android:layout_marginEnd="20dp"
+            android:layout_width="50dp"
+            android:layout_height="25dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="330dp"
-            android:layout_gravity="center_vertical" />
+            android:layout_marginStart="30dp"
+            android:text="@string/exer_notifi"
+            android:textSize="20sp" />
 
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/btn_comm_noti"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:text="       커뮤니티 알림"
-            android:textColor="@color/black"
-            android:gravity="center_vertical" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
         <Switch
-            android:id="@+id/comm_noti_switch"
+            android:id="@+id/exer_notifi"
+            android:layout_marginEnd="20dp"
+            android:layout_width="50dp"
+            android:layout_height="25dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="330dp"
-            android:layout_gravity="center_vertical" />
+            android:layout_marginStart="30dp"
+            android:text="@string/comm_notifi"
+            android:textSize="20sp" />
 
-    </FrameLayout>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
+        <Switch
+            android:id="@+id/comm_notifi"
+            android:layout_marginEnd="20dp"
+            android:layout_width="50dp"
+            android:layout_height="25dp"/>
+
+    </LinearLayout>
 </LinearLayout>

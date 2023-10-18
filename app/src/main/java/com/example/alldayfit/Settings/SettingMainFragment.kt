@@ -10,8 +10,14 @@ import com.example.alldayfit.databinding.SettingMainFragmentBinding
 
 class SettingMainFragment : Fragment() {
     private var _binding: SettingMainFragmentBinding? = null
-    private val binding get() = _binding
+    private val binding get() = _binding!!
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.setting_main_fragment, container, false)
+        _binding = SettingMainFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
