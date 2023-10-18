@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:paddingTop="15dp"
     android:padding="10dp"
+    android:background="@color/light_blue"
     tools:context=".Settings.SettingModUserFragment">
 
     <TextView
@@ -49,7 +50,8 @@
         android:id="@+id/divider"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton" />
@@ -58,54 +60,95 @@
         android:id="@+id/textView_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:text="유저 닉네임"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     <TextView
+        android:id="@+id/nick_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/button_radius"
+        android:text="닉네임 수정"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/divider_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nick_info" />
+
+    <TextView
         android:id="@+id/textView_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:text="로그인 정보"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_2" />
 
+    <TextView
+        android:id="@+id/btn_login_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_radius"
+        android:text="소셜 로그인 종류"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/divider_2"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <View
         android:id="@+id/divider_2"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_3" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_modify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="118dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/button_radius"
         android:text="수정"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_cancel"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider_2" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/button_radius"
         android:text="취소"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_modify"
         app:layout_constraintTop_toBottomOf="@+id/divider_2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
