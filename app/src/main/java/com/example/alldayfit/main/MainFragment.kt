@@ -1,4 +1,4 @@
-package com.example.alldayfit
+package com.example.alldayfit.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,8 +10,8 @@ import com.example.alldayfit.databinding.MainActivityBinding
 
 
 class MainFragment : Fragment() {
-   private lateinit var mBinding : FragmentMainBinding
-
+    private var _binding: FragmentMainBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,9 +21,14 @@ class MainFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        mBinding = FragmentMainBinding.inflate(inflater, container, false)
-        return mBinding.root
+    ): View {
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

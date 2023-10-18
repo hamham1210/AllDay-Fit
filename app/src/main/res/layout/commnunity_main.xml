@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CommunityHomeFragment">
-
+    tools:context=".community.CommunityHomeFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
@@ -21,9 +20,9 @@
         android:id="@+id/viewpager"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_post_btn"
@@ -38,7 +37,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="27dp"
         app:tint="@color/white" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
