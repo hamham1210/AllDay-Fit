@@ -1,28 +1,10 @@
 <resources>
     <string name="app_name">AllDayFit</string>
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="dark_mode">다크모드</string>
-    <string name="app_noti">앱 알림 설정</string>
-    <string name="guide">이용가이드</string>
-    <string name="notice">공지사항</string>
-    <string name="mod_user">유저정보 수정</string>
-    <string name="Inbody">Inbody 연동 여부</string>
-    <string name="all_app_notifi">앱 전체 알림</string>
-    <string name="exer_notifi">운동 알림</string>
-    <string name="comm_notifi">커뮤니티 알림</string>
+
+    <string name="month_record">월간 기록</string>
+    <string name="week_mode">Week mode</string>
+
+    <string name="community_fab_add_post">내 게시물 추가</string>
 </resources>
