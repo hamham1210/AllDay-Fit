@@ -5,12 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.alldayfit.databinding.ExerciseConditionFragmentBinding
+import com.example.alldayfit.databinding.ExerciseStatusFragmentBinding
 
 
-class ExerciseConditionFragment : Fragment() {
+class ExerciseStatusFragment : Fragment() {
 
-    private var _binding: ExerciseConditionFragmentBinding? = null
+    private var _binding: ExerciseStatusFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +22,7 @@ class ExerciseConditionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = ExerciseConditionFragmentBinding.inflate(inflater, container, false)
+        _binding = ExerciseStatusFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
