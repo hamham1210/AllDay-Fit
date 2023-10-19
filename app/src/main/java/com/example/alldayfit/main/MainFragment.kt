@@ -17,7 +17,7 @@ import java.util.Locale
 
 
 class MainFragment : Fragment() {
-    private var _binding: MainFragmentBinding? = null
+    private var _binding : FragmentMainBinding? = null
     private val binding get() = _binding!!
 
     lateinit var selectedDate: LocalDate
@@ -40,7 +40,7 @@ class MainFragment : Fragment() {
         selectedDate = LocalDate.now()
         val monthformatter = DateTimeFormatter.ofPattern("yyyy.MM")
         val date = monthformatter.format(selectedDate).toString()
-        binding.yearDate?.text = date
+        _binding?.yearDate?.text = date
         // 년도와 월 표시
     }
 
