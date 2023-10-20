@@ -75,11 +75,11 @@ class MainActivity : AppCompatActivity() {
         val mTitle = mBinding.toolbarTitle
         mTitle.text = "All_DayFit"
     }
-
+    // 툴바 메뉴 버튼을 설정- menu에 있는 item을 연결하는 부분
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.main_toolbar_menu, menu)
         return true
     }
 
-}
+    }
