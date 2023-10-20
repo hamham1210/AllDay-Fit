@@ -78,8 +78,8 @@
     <string name="mod_exercise_locate">운동 장소 설정</string>
     <string name="mod_exercise_time">운동 시간 설정</string>
 
-    <string name="example_2_title">Example 2</string>
-    <string name="example_2_subtitle">Month header view, single selection, vertical scrolling, hides in and out dates.</string>
+    <string name="calendar_title">Example 2</string>
+    <string name="calendar_subtitle">Month header view, single selection, vertical scrolling, hides in and out dates.</string>
     <string name="activity_title_view">Calendar View Sample</string>
     <string name="main_exercise_time">HEIGHT</string>
     <string name="calendar">달력</string>
