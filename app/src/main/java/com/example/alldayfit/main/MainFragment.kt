@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.alldayfit.databinding.FragmentMainBinding
+import com.example.alldayfit.databinding.MainFragmentBinding
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -16,7 +17,7 @@ import java.util.Locale
 
 
 class MainFragment : Fragment() {
-    private var _binding: FragmentMainBinding? = null
+    private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
 
     lateinit var selectedDate: LocalDate
@@ -24,8 +25,8 @@ class MainFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+    ): View {
+        _binding = MainFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -39,7 +40,7 @@ class MainFragment : Fragment() {
         selectedDate = LocalDate.now()
         val monthformatter = DateTimeFormatter.ofPattern("yyyy.MM")
         val date = monthformatter.format(selectedDate).toString()
-        _binding?.yearDate?.text = date
+        binding.yearDate?.text = date
         // 년도와 월 표시
     }
 
