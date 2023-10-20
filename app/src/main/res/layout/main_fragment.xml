@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:text="9월\n16일"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_size_very_small"
         app:layout_constraintEnd_toStartOf="@id/tue"
         app:layout_constraintStart_toEndOf="@id/sun"
         app:layout_constraintTop_toTopOf="@id/sun" />
@@ -96,7 +96,7 @@
         android:layout_height="wrap_content"
         android:text="9월\n17일"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_size_very_small"
         app:layout_constraintEnd_toStartOf="@id/wed"
         app:layout_constraintStart_toEndOf="@id/mon"
         app:layout_constraintTop_toTopOf="@id/sun" />
@@ -117,7 +117,7 @@
         android:layout_height="wrap_content"
         android:text="9월\n18일"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_size_very_small"
         app:layout_constraintEnd_toStartOf="@id/thu"
         app:layout_constraintStart_toEndOf="@id/tue"
         app:layout_constraintTop_toTopOf="@id/sun" />
@@ -139,7 +139,7 @@
         android:layout_height="wrap_content"
         android:text="9월\n19일"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_size_very_small"
         app:layout_constraintEnd_toStartOf="@id/fri"
         app:layout_constraintStart_toEndOf="@id/wed"
         app:layout_constraintTop_toTopOf="@id/sun" />
@@ -160,7 +160,7 @@
         android:layout_height="wrap_content"
         android:text="9월\n20일"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_size_very_small"
         app:layout_constraintEnd_toStartOf="@id/sat"
         app:layout_constraintStart_toEndOf="@id/thu"
         app:layout_constraintTop_toTopOf="@id/sun" />
@@ -181,7 +181,7 @@
         android:layout_height="wrap_content"
         android:text="9월\n21일"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_size_very_small"
         app:layout_constraintEnd_toEndOf="@id/Frame"
         app:layout_constraintStart_toEndOf="@id/fri"
         app:layout_constraintTop_toTopOf="@id/sun" />
