@@ -117,7 +117,7 @@ class  CalendarFragment : BaseFragment(R.layout.calendar_fragment), HasToolbar, 
     override val toolbar: Toolbar
         get() = binding.exTwoToolbar
 
-    override val titleRes: Int = R.string.example_2_title
+    override val titleRes: Int = R.string.calendar_title
 
     private lateinit var binding: CalendarFragmentBinding
 
