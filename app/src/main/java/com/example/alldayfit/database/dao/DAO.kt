@@ -1,0 +1,65 @@
+package com.example.alldayfit.database.dao
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import com.example.alldayfit.database.entity.DietLogEntity
+import com.example.alldayfit.database.entity.ExerciseLogEntity
+import com.example.alldayfit.database.entity.PhysicalInformationEntity
+import com.example.alldayfit.database.entity.UserEntity
+
+
+// UserDAO
+@Dao
+interface UserDao {
+    // 사용자 정보를 Database 삽입
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertUser(user: UserEntity)
+
+    // 특정 userId에 해당하는 사용자 정보를 조회
+    @Query("SELECT * FROM users WHERE userId = :userId")
+    suspend fun getUserById(userId: String): UserEntity?
+}
+
+
+// PhysicalInformationDao
+@Dao
+interface PhysicalInformationDao {
+    // 신체 정보를 Database 삽입
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertPhysicalInformation(physicalInformation: PhysicalInformationEntity)
+
+    // 특정 userId에 해당하는 신체 정보를 조회
+    @Query("SELECT * FROM physical_information WHERE userId = :userId")
+    suspend fun getPhysicalInformationByUserId(userId: String): PhysicalInformationEntity?
+}
+
+
+// ExerciseLogDao
+@Dao
+interface ExerciseLogDao {
+    // 운동 로그 Database 삽입
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertExerciseLog(exerciseLog: ExerciseLogEntity)
+
+    // 특정 userId에 해당하는 운동 로그를 조회
+    @Query("SELECT * FROM exercise_logs WHERE userId = :userId")
+    suspend fun getExerciseLogByUserId(userId: String): ExerciseLogEntity?
+}
+
+
+// DietLogDao
+@Dao
+interface DietLogDao {
+    // 식사 로그를 Database 삽입
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertDietLog(dietLog: DietLogEntity)
+
+    // 특정 userId에 해당하는 식사 로그를 조회
+    @Query("SELECT * FROM diet_logs WHERE userId = :userId")
+    suspend fun getDietLogByUserId(userId: String): DietLogEntity?
+}
+
+
+
