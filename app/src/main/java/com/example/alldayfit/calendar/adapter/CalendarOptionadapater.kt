@@ -1,40 +1,19 @@
-package com.example.alldayfit.calendar
+package com.example.alldayfit.calendar.adapter
 
 import android.view.ViewGroup
 import androidx.annotation.AnimRes
 import androidx.annotation.StringRes
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alldayfit.R
+import com.example.alldayfit.calendar.CalendarFragment
+import com.example.alldayfit.calendar.anim.horizontal
+import com.example.alldayfit.calendar.data.ExampleItem
 import com.example.alldayfit.calendar.util.layoutInflater
 import com.example.alldayfit.databinding.CalendarViewOptionsItemViewBinding
 
-data class ExampleItem(
-    @StringRes val titleRes: Int,
-    @StringRes val subtitleRes: Int,
-    val animation: Animation,
-    val createView: () -> CalendarFragment,
-)
 
-data class Animation(
-    @AnimRes val enter: Int,
-    @AnimRes val exit: Int,
-    @AnimRes val popEnter: Int,
-    @AnimRes val popExit: Int,
-)
 
-val vertical = Animation(
-    enter = R.anim.slide_in_up,
-    exit = R.anim.fade_out,
-    popEnter = R.anim.fade_in,
-    popExit = R.anim.slide_out_down,
-)
 
-val horizontal = Animation(
-    enter = R.anim.slide_in_right,
-    exit = R.anim.slide_out_left,
-    popEnter = R.anim.slide_in_left,
-    popExit = R.anim.slide_out_right,
-)
 
 class CalendarViewOptionsAdapter(val onClick: (ExampleItem) -> Unit) :
     RecyclerView.Adapter<CalendarViewOptionsAdapter.HomeOptionsViewHolder>() {
@@ -42,8 +21,8 @@ class CalendarViewOptionsAdapter(val onClick: (ExampleItem) -> Unit) :
     val examples = listOf(
 
         ExampleItem(
-            R.string.example_2_title,
-            R.string.example_2_subtitle,
+            R.string.calendar_title,
+            R.string.calendar_subtitle,
             horizontal,
         ) { CalendarFragment() },
 

@@ -56,7 +56,7 @@ internal fun Context.getColorCompat(@ColorRes color: Int) =
 internal fun TextView.setTextColorRes(@ColorRes color: Int) =
     setTextColor(context.getColorCompat(color))
 
-// 아래 주석 처리된 함수는 StatusBar의 색상을 업데이트하는데 사용될 수 있는 예제 코드입니다.
+
 // 주석을 해제하고 사용하면 StatusBar의 색상을 동적으로 변경할 수 있습니다.
 //fun Fragment.addStatusBarColorUpdate(@ColorRes colorRes: Int) {
 //    view?.findViewTreeLifecycleOwner()?.lifecycle?.addObserver(
