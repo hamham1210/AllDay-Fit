@@ -1,11 +1,11 @@
 package com.example.alldayfit.main
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.alldayfit.databinding.MainFragmentBinding
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -16,17 +16,70 @@ import java.util.Locale
 
 
 class MainFragment : Fragment() {
-    private var _binding : MainFragmentBinding? = null
+    private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
 
     lateinit var selectedDate: LocalDate
     val cal: Calendar = Calendar.getInstance()
 
+    private var startTime: String? = null
+    private var endTime: String? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = MainFragmentBinding.inflate(inflater, container, false)
+
+        //운동시작 완료 시간
+        binding.doExercise.setOnClickListener {
+            if (binding.doExercise.text == "운동하기") {
+                binding.doExercise.text = "끝내기"
+                startTime = SimpleDateFormat("yyyy.MM.dd HH:mm:ss").format(Date())
+                val message = "운동시작 시간: $startTime"
+                showToast(message)
+            } else if (binding.doExercise.text == "끝내기") {
+                binding.doExercise.text = "운동하기"
+                endTime = SimpleDateFormat("yyyy.MM.dd HH:mm:ss").format(Date())
+                val message = "운동완료 시간: $endTime"
+                showToast(message)
+
+                val elapsedTime = calculateElapsedTime(startTime!!, endTime!!)
+                showToast(
+                    "운동 시간: ${elapsedTime.get(Calendar.MINUTE)} 분" + " ${elapsedTime.get(Calendar.SECOND)} 초"
+                )
+            }
+        }
         return binding.root
+    }
+
+    // 운동 시간 계산
+    private fun calculateElapsedTime(startTime: String, endTime: String): Calendar {
+        val format = SimpleDateFormat("yyyy.MM.dd HH:mm:ss")
+        try {
+            val start = format.parse(startTime)
+            val end = format.parse(endTime)
+            if (start != null && end != null) {
+                val startcalendar = Calendar.getInstance()
+                startcalendar.time = start
+
+                val endcalendar = Calendar.getInstance()
+                endcalendar.time = end
+
+                val elapsedTimeMillis = endcalendar.timeInMillis - startcalendar.timeInMillis
+
+                val calendar = Calendar.getInstance()
+                calendar.timeInMillis = elapsedTimeMillis
+
+                return calendar
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return Calendar.getInstance()
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,6 +102,7 @@ class MainFragment : Fragment() {
             val day = dayFormat.format(date)
             return day
         }
+
         val daysOfWeek = listOf(
             _binding?.sun,
             _binding?.mon,
@@ -82,7 +136,7 @@ class MainFragment : Fragment() {
         _binding = null
     }
 
-    companion object{
+    companion object {
         fun newInstance() = MainFragment()
     }
 
