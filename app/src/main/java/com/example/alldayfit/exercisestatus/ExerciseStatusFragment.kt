@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.alldayfit.R
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,6 +20,9 @@ class ExerciseStatusFragment : Fragment() {
     private var _binding: ExerciseStatusFragmentBinding? = null
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
     val exerciseStatusViewModel: ExerciseStatusViewModel by viewModels()
     private lateinit var adapter: DailyAdapter
 
@@ -27,6 +31,7 @@ class ExerciseStatusFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = ExerciseStatusFragmentBinding.inflate(inflater, container, false)
+        initView()
 
         binding.goalListFixBtn.setOnClickListener {
             val addGoalDialog =
@@ -43,6 +48,15 @@ class ExerciseStatusFragment : Fragment() {
             adapter.addGoal(data)
         })
         return binding.root
+    }
+
+    private fun initView() = with(binding) {
+        statusWeightView.statusTypeTxt.text=getString(R.string.weight)
+        statusHeightView.statusTypeTxt.text=getString(R.string.height)
+        statusBmiView.statusTypeTxt.text=getString(R.string.bmi)
+        statusExerciseTimeView.statusTypeTxt.text=getString(R.string.exercise_time)
+        statusCalorieConsumptionView.statusTypeTxt.text=getString(R.string.calorie_consumption)
+        statusCalorieConsumptionView.statusTypeTxt.textSize = 13F
     }
 
     override fun onDestroyView() {

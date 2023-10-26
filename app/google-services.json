@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "11976146148",
+    "project_id": "alldayfit-d9c92",
+    "storage_bucket": "alldayfit-d9c92.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11976146148:android:b4ba1a96f3ecd1a31040f1",
+        "android_client_info": {
+          "package_name": "com.example.alldayfit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvW4ghcPPzusMoLUh5MZC74s4oJhr5c-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

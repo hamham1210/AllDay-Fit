@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,7 +14,7 @@
         android:layout_marginTop="10dp"
         android:text="2023.10.24"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="@dimen/text_size_medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -58,7 +57,7 @@
             android:layout_height="wrap_content"
             android:text="홍현민"
             android:textColor="@color/white"
-            android:textSize="32sp"/>
+            android:textSize="@dimen/text_size_very_large"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -172,7 +171,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="@string/exercise_status_user_state"
-            android:textSize="24sp"
+            android:textSize="@dimen/text_size_medium"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/goal_list_wrap"
             app:layout_constraintStart_toStartOf="parent"
@@ -201,12 +200,23 @@
             app:layout_constraintStart_toStartOf="@id/goal_list_wrap"
             app:layout_constraintTop_toTopOf="@id/goal_list_wrap" />
 
+        <ImageView
+            android:id="@+id/goal_list_fix_btn"
+            android:translationZ="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintEnd_toEndOf="@id/goal_list_wrap"
+            app:layout_constraintTop_toTopOf="@id/goal_list_wrap"
+            app:tint="@color/black" />
+
         <LinearLayout
             android:id="@+id/goal_list_wrap"
-            android:layout_width="140dp"
+            android:layout_width="0dp"
             android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.4"
             android:layout_marginVertical="10dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/exercise_record_board"
             android:gravity="center_horizontal"
             android:orientation="vertical"
@@ -221,7 +231,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/exercise_status_week_goal"
                 android:textColor="@color/orange"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_very_small"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -231,15 +241,6 @@
                 android:layout_weight="1" />
 
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/goal_list_fix_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_edit"
-            app:layout_constraintEnd_toEndOf="@id/goal_list_wrap"
-            app:layout_constraintTop_toTopOf="@id/goal_list_wrap"
-            app:tint="@color/black" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
