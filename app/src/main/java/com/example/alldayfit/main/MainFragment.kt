@@ -1,11 +1,13 @@
 package com.example.alldayfit.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.alldayfit.count.CountPage
 import com.example.alldayfit.databinding.MainFragmentBinding
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -37,6 +39,8 @@ class MainFragment : Fragment() {
                 startTime = SimpleDateFormat("yyyy.MM.dd HH:mm:ss").format(Date())
                 val message = "운동시작 시간: $startTime"
                 showToast(message)
+                var intent = Intent(context, CountPage::class.java)
+                startActivity(intent)
             } else if (binding.doExercise.text == "끝내기") {
                 binding.doExercise.text = "운동하기"
                 endTime = SimpleDateFormat("yyyy.MM.dd HH:mm:ss").format(Date())
