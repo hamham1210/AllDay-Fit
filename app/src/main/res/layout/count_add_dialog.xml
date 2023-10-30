@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/count_spinner_item">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close_black" />
+
+    <TextView
+        android:id="@+id/select_part"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="75dp"
+        android:text="부위 선택"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/choice1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/count_spinner_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:minHeight="50dp"
+        android:minWidth="320dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/select_part" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/choice1"
+        app:layout_constraintStart_toStartOf="@id/choice1"
+        app:layout_constraintTop_toTopOf="@id/choice1" />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:src="@drawable/ic_arrrow_down"
+        app:layout_constraintBottom_toBottomOf="@id/choice1"
+        app:layout_constraintTop_toTopOf="@id/choice1"
+        app:layout_constraintEnd_toEndOf="@+id/choice1"/>
+
+    <TextView
+        android:id="@+id/exercise_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="10dp"
+        android:text="운동상세"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/choice1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/choice2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/count_spinner_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:minHeight="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/exercise_details" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/choice2"
+        app:layout_constraintStart_toStartOf="@id/choice2"
+        app:layout_constraintTop_toTopOf="@id/choice2" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:src="@drawable/ic_arrrow_down"
+        app:layout_constraintBottom_toBottomOf="@id/choice2"
+        app:layout_constraintTop_toTopOf="@id/choice2"
+        app:layout_constraintEnd_toEndOf="@+id/choice2"/>
+
+    <TextView
+        android:id="@+id/select_exercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="운동선택"
+        android:textSize="24sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="26dp"
+        app:layout_constraintTop_toBottomOf="@id/choice2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_exercise"
+        app:layout_constraintWidth_percent="0.8"
+        app:singleSelection="true" >
+        <com.google.android.material.chip.Chip
+            android:id="@+id/music_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="상체"
+            android:textSize="12sp" />
+    </com.google.android.material.chip.ChipGroup>
+
+
+    <TextView
+        android:id="@+id/count_set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="40dp"
+        android:text="세트"
+        app:layout_constraintTop_toBottomOf="@id/chip_group"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_set"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/count_spinner_item"
+        app:layout_constraintEnd_toStartOf="@+id/edit_count"
+        app:layout_constraintTop_toBottomOf="@id/count_set"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="180dp"
+        android:text="회"
+        app:layout_constraintTop_toBottomOf="@id/chip_group"
+        app:layout_constraintStart_toEndOf="@id/count_set"/>
+
+    <EditText
+        android:id="@+id/edit_count"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/count_spinner_item"
+        android:minHeight="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/edit_set"
+        app:layout_constraintTop_toBottomOf="@id/counter" />
+
+    <ImageView
+        android:id="@+id/create_rootine"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/btn_counter"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/exit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_set" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="루틴 생성"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/create_rootine"
+        app:layout_constraintTop_toTopOf="@id/create_rootine"
+        app:layout_constraintStart_toStartOf="@id/create_rootine"
+        app:layout_constraintBottom_toBottomOf="@id/create_rootine"/>
+
+    <ImageView
+        android:id="@+id/exit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="30dp"
+        android:minHeight="60dp"
+        android:src="@drawable/btn_counter2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/create_rootine"
+        app:layout_constraintTop_toBottomOf="@id/edit_count" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="취소"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@id/exit"
+        app:layout_constraintBottom_toBottomOf="@id/exit"
+        app:layout_constraintTop_toTopOf="@id/exit"
+        app:layout_constraintEnd_toEndOf="@id/exit"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
