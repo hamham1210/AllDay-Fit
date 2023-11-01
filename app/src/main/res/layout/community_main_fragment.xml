@@ -32,7 +32,7 @@
         android:layout_margin="25dp"
         android:backgroundTint="@color/dark_blue"
         android:contentDescription="@string/community_fab_add_post"
-        android:src="@drawable/ic_add"
+        android:src="@drawable/ic_plus_white"
         app:elevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

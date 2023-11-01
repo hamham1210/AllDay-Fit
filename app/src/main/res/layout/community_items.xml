@@ -9,10 +9,15 @@
 
     <ImageView
         android:id="@+id/ic_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/ic_user2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:clipToOutline="true"
+        android:maxWidth="30dp"
+        android:maxHeight="30dp"
+        android:src="@drawable/ic_user"
+        app:layout_constraintDimensionRatio="1.2"
+        app:layout_constraintEnd_toStartOf="@id/tv_nickname"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
@@ -20,6 +25,7 @@
         android:id="@+id/tv_nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
         android:text="쫄튀"
         android:textSize="@dimen/text_size_very_small"
         app:layout_constraintBottom_toBottomOf="@id/ic_user"
@@ -32,10 +38,12 @@
         android:layout_height="wrap_content"
         android:text="@string/community_tv_date"
         android:textAlignment="textStart"
+        android:layout_marginEnd="15dp"
         android:textSize="@dimen/text_size_very_small"
         app:layout_constraintBottom_toBottomOf="@+id/ic_user"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/ic_user" />
+
 
     <TextView
         android:id="@+id/tv_title"
@@ -55,38 +63,38 @@
         android:padding="5dp"
         android:text="글의 내용을 적어두기"
         android:textSize="@dimen/text_size_small"
-        app:layout_constraintBottom_toTopOf="@id/btn_amend"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_nickname" />
 
-    <android.widget.Button
-        android:id="@+id/btn_amend"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginHorizontal="15dp"
-        android:background="@drawable/button_radius"
-        android:backgroundTint="@color/dark_blue"
-        android:text="@string/community_btn_amend"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_very_small"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="2:1"
-        app:layout_constraintEnd_toStartOf="@id/btn_delete"
-        app:layout_constraintTop_toBottomOf="@id/tv_info" />
+<!--    <android.widget.Button-->
+<!--        android:id="@+id/btn_amend"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="48dp"-->
+<!--        android:layout_marginHorizontal="15dp"-->
+<!--        android:background="@drawable/button_radius"-->
+<!--        android:backgroundTint="@color/dark_blue"-->
+<!--        android:text="@string/community_btn_amend"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/text_size_very_small"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintDimensionRatio="2:1"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/btn_delete"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_info" />-->
 
-    <android.widget.Button
-        android:id="@+id/btn_delete"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginHorizontal="5dp"
-        android:background="@drawable/button_radius2"
-        android:backgroundTint="@color/gray"
-        android:text="@string/community_btn_delete"
-        android:textSize="@dimen/text_size_very_small"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="2:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_info" />
+<!--    <android.widget.Button-->
+<!--        android:id="@+id/btn_delete"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="48dp"-->
+<!--        android:layout_marginHorizontal="5dp"-->
+<!--        android:background="@drawable/button_radius2"-->
+<!--        android:backgroundTint="@color/gray"-->
+<!--        android:text="@string/community_btn_delete"-->
+<!--        android:textSize="@dimen/text_size_very_small"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintDimensionRatio="2:1"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_info" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
