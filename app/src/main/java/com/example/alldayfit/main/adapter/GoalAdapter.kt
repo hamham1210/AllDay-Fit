@@ -1,4 +1,4 @@
-package com.example.alldayfit.exercisestatus.adapter
+package com.example.alldayfit.main.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,27 +6,25 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alldayfit.databinding.DietRecordAddItemBinding
-import com.example.alldayfit.databinding.ExerciseStatusGoalItemBinding
-import com.example.alldayfit.exercisestatus.ExerciseStatusAddGoalViewModel
-import com.example.alldayfit.exercisestatus.model.DailyEdit
-import com.example.alldayfit.exercisestatus.model.DailyEdit.Companion.DIALOG_POSITION
-import com.example.alldayfit.exercisestatus.model.DailyEdit.Companion.POST_POSITION
+import com.example.alldayfit.databinding.MainGoalItemBinding
+import com.example.alldayfit.main.Goal
+import com.example.alldayfit.main.MainViewModel
 import java.lang.RuntimeException
 
-class DailyAdapter(private val viewModel: ExerciseStatusAddGoalViewModel) :
-    ListAdapter<DailyEdit, RecyclerView.ViewHolder>(diffUtil) {
+class GoalAdapter(private val viewModel: MainViewModel) :
+    ListAdapter<Goal, RecyclerView.ViewHolder>(diffUtil) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            POST_POSITION -> {
+            Goal.POST_POSITION -> {
                 val binding = DietRecordAddItemBinding.inflate(layoutInflater, parent, false)
                 PostHolder(binding)
             }
 
-            DIALOG_POSITION -> {
-                val binding = ExerciseStatusGoalItemBinding.inflate(layoutInflater, parent, false)
+            Goal.DIALOG_POSITION -> {
+                val binding = MainGoalItemBinding.inflate(layoutInflater, parent, false)
                 DailyHolder(binding)
             }
 
@@ -38,14 +36,14 @@ class DailyAdapter(private val viewModel: ExerciseStatusAddGoalViewModel) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val currentItem = getItem(position)
         when(currentItem.type){
-            POST_POSITION  -> (holder as PostHolder).bind(currentItem)
-            DIALOG_POSITION -> (holder as DailyHolder).bind(currentItem)
+            Goal.POST_POSITION -> (holder as PostHolder).bind(currentItem)
+            Goal.DIALOG_POSITION -> (holder as DailyHolder).bind(currentItem)
         }
 
     }
-    inner class DailyHolder(val binding: ExerciseStatusGoalItemBinding) :
+    inner class DailyHolder(val binding: MainGoalItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: DailyEdit) {
+        fun bind(data: Goal) {
             binding.apply {
                 goal.setText(data.goals)
                 checkbox.isChecked = data.goalckeck
@@ -55,7 +53,7 @@ class DailyAdapter(private val viewModel: ExerciseStatusAddGoalViewModel) :
 
     inner class PostHolder(val binding: DietRecordAddItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: DailyEdit) {
+        fun bind(data: Goal) {
             binding.apply {
                 mealEdit.setText(data.goals)
             }
@@ -70,18 +68,18 @@ class DailyAdapter(private val viewModel: ExerciseStatusAddGoalViewModel) :
         return getItem(position).type
     }
 
-    fun addGoal(newData: List<DailyEdit>) {
+    fun addGoal(newData: List<Goal>) {
         super.submitList(newData)
         notifyDataSetChanged()
     }
 
     companion object {
-        val diffUtil = object : DiffUtil.ItemCallback<DailyEdit>() {
-            override fun areItemsTheSame(oldItem: DailyEdit, newItem: DailyEdit): Boolean {
+        val diffUtil = object : DiffUtil.ItemCallback<Goal>() {
+            override fun areItemsTheSame(oldItem: Goal, newItem: Goal): Boolean {
                 return oldItem.goals == newItem.goals
             }
 
-            override fun areContentsTheSame(oldItem: DailyEdit, newItem: DailyEdit): Boolean {
+            override fun areContentsTheSame(oldItem: Goal, newItem: Goal): Boolean {
                 return oldItem.hashCode() == newItem.hashCode()
             }
         }

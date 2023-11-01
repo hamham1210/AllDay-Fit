@@ -2,15 +2,16 @@ package com.example.alldayfit.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.example.alldayfit.count.CountPage
 import com.example.alldayfit.databinding.MainFragmentBinding
-import com.example.alldayfit.db.RealTimeRepository
+import com.example.alldayfit.main.adapter.GoalAdapter
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -28,6 +29,8 @@ class MainFragment : Fragment() {
 
     private var startTime: String? = null
     private var endTime: String? = null
+    val viewModel: MainViewModel by viewModels()
+    lateinit var adapter : GoalAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -48,13 +51,26 @@ class MainFragment : Fragment() {
                 endTime = SimpleDateFormat("yyyy.MM.dd HH:mm:ss").format(Date())
                 val message = "운동완료 시간: $endTime"
                 showToast(message)
-
                 val elapsedTime = calculateElapsedTime(startTime!!, endTime!!)
                 showToast(
                     "운동 시간: ${elapsedTime.get(Calendar.MINUTE)} 분" + " ${elapsedTime.get(Calendar.SECOND)} 초"
                 )
             }
         }
+                binding.goalListFixBtn.setOnClickListener {
+            val addGoalDialog =
+                ExerciseStatusAddGoalDialog(viewModel)
+            addGoalDialog.show(childFragmentManager, "ExerciseStatusDailyEditDialog")
+            viewModel.changePostType(viewModel.goalList)
+        }//프래그먼트 띄우기 및 타입 변환
+
+        binding.goalList.layoutManager =
+            androidx.recyclerview.widget.LinearLayoutManager(context)
+        adapter = GoalAdapter(viewModel)
+        binding.goalList.adapter = adapter
+        viewModel.goalLiveData.observe(viewLifecycleOwner, Observer { data ->
+            adapter.addGoal(data)
+        })
         return binding.root
     }
 

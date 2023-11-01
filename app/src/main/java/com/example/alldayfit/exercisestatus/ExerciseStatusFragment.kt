@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.alldayfit.databinding.ExerciseStatusFragmentBinding
-import com.example.alldayfit.exercisestatus.adapter.DailyAdapter
+
 
 
 class ExerciseStatusFragment : Fragment() {
@@ -22,10 +22,9 @@ class ExerciseStatusFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-    val exerciseStatusViewModel: ExerciseStatusAddGoalViewModel by viewModels()
 
     private lateinit var viewModel: BodyStatusViewModel
-    private lateinit var adapter: DailyAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,21 +47,6 @@ class ExerciseStatusFragment : Fragment() {
                 dialog.show(requireActivity().supportFragmentManager, "ExerciseStatusDailyEditDialog")
             }
 
-        // Todo 다이얼로그 이사로 인해 코드 수정 필요
-//        binding.goalListFixBtn.setOnClickListener {
-//            val addGoalDialog =
-//                ExerciseStatusAddGoalDialog(exerciseStatusViewModel)
-//            addGoalDialog.show(childFragmentManager, "ExerciseStatusDailyEditDialog")
-//            exerciseStatusViewModel.changePostType(exerciseStatusViewModel.dailyEditList)
-//        }//프래그먼트 띄우기 및 타입 변환
-
-//        binding.goalList.layoutManager =
-//            androidx.recyclerview.widget.LinearLayoutManager(context)
-        adapter = DailyAdapter(exerciseStatusViewModel)
-//        binding.goalList.adapter = adapter
-        exerciseStatusViewModel.goalLiveData.observe(viewLifecycleOwner, Observer { data ->
-            adapter.addGoal(data)
-        })
         return binding.root
     }
 

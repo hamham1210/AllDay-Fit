@@ -1,26 +1,22 @@
-package com.example.alldayfit.exercisestatus;
+package com.example.alldayfit.main;
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.Observer
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
-import androidx.navigation.fragment.findNavController
-import com.example.alldayfit.R
-import com.example.alldayfit.databinding.ExerciseStatusAddGoalDialogBinding
-import com.example.alldayfit.exercisestatus.adapter.DailyAdapter
-import com.example.alldayfit.exercisestatus.model.DailyEdit
+import com.example.alldayfit.databinding.MainAddGoalDialogBinding
 
-class ExerciseStatusAddGoalDialog(private val exerciseStatusAddGoalViewModel: ExerciseStatusAddGoalViewModel) :
+import com.example.alldayfit.main.adapter.GoalAdapter
+
+class ExerciseStatusAddGoalDialog(private val mainViewModel: MainViewModel) :
     DialogFragment() {
 
-    private var _binding: ExerciseStatusAddGoalDialogBinding? = null
+    private var _binding: MainAddGoalDialogBinding? = null
     private val binding get() = _binding!!
-    private lateinit var adapter: DailyAdapter
-    private lateinit var goal: DailyEdit
+    private lateinit var adapter: GoalAdapter
+    private lateinit var goal: Goal
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,18 +25,18 @@ class ExerciseStatusAddGoalDialog(private val exerciseStatusAddGoalViewModel: Ex
     ): View {
         //데이터 바인딩 연결
         _binding =
-            ExerciseStatusAddGoalDialogBinding.inflate(inflater, container, false)
+                MainAddGoalDialogBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.goalListview.layoutManager =
             androidx.recyclerview.widget.LinearLayoutManager(context)
-        adapter = DailyAdapter(exerciseStatusAddGoalViewModel)
+        adapter = GoalAdapter(mainViewModel)
         binding.goalListview.adapter = adapter
 
         binding.addGoal.setOnClickListener {
-            goal = DailyEdit(binding.goalEdit.text.toString(), false, DailyEdit.POST_POSITION)
-            exerciseStatusAddGoalViewModel.setGoalList(goal)
+            goal = Goal(binding.goalEdit.text.toString(), false, Goal.POST_POSITION)
+            mainViewModel.setGoalList(goal)
         }
-        exerciseStatusAddGoalViewModel.goalLiveData.observe(
+        mainViewModel.goalLiveData.observe(
             viewLifecycleOwner, Observer { data ->
                 adapter.addGoal(data)
             })
@@ -54,8 +50,8 @@ class ExerciseStatusAddGoalDialog(private val exerciseStatusAddGoalViewModel: Ex
 //        root.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.none))
         // exercise 주간 목표 마치는 버튼
         finishBtn.setOnClickListener {
-            goal = DailyEdit(binding.goalEdit.text.toString(), false, DailyEdit.POST_POSITION)
-            exerciseStatusAddGoalViewModel.changeDialogType(goal)
+            goal = Goal(binding.goalEdit.text.toString(), false, Goal.POST_POSITION)
+           mainViewModel.changeDialogType(goal)
             dismiss()
         }
         // dialog 닫는 버튼

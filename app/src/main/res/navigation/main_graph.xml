@@ -41,9 +41,9 @@
     </fragment>
     <dialog
         android:id="@+id/exerciseStatusAddGoalDialog"
-        android:name="com.example.alldayfit.exercisestatus.ExerciseStatusAddGoalDialog"
+        android:name="com.example.alldayfit.main.ExerciseStatusAddGoalDialog"
         android:label="exercise_status_add_goal_dialog"
-        tools:layout="@layout/exercise_status_add_goal_dialog" />
+        tools:layout="@layout/main_add_goal_dialog" />
     <dialog
         android:id="@+id/exerciseStatusDailyEditDialog"
         android:name="com.example.alldayfit.exercisestatus.ExerciseStatusDailyEditDialog"
