@@ -1,17 +1,23 @@
 package com.example.alldayfit.community
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import com.example.alldayfit.community.adapter.CommunityViewAdapter
 import com.example.alldayfit.community.adapter.CommunityViewPagerAdapter
 import com.example.alldayfit.databinding.CommunityMainFragmentBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
-class CommunityMainFragment : Fragment() {
+class CommunityMainFragment() : Fragment() {
     private var _binding: CommunityMainFragmentBinding? = null
     private val binding get() = _binding!!
+    private lateinit var  viewModel: CommunityViewModel
+
 
     // viewpager adapter
     private val communityViewPagerAdapter by lazy {
@@ -25,7 +31,16 @@ class CommunityMainFragment : Fragment() {
     ): View {
         _binding = CommunityMainFragmentBinding.inflate(inflater, container, false)
         initView()
+        setdialog()
         return binding.root
+    }
+
+    private fun setdialog() = with(binding){
+        addPostBtn.setOnClickListener{
+            viewModel = ViewModelProvider(requireActivity()).get(CommunityViewModel::class.java)
+            val newPostDialog = CommunityNewPostDialog(viewModel)
+            newPostDialog.show(childFragmentManager, "newpost")
+        }
     }
 
     /* fragment design, data 초기 설정 */
