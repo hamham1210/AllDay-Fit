@@ -91,4 +91,7 @@
     <string name="count_ment_user">루트를 지정하시면 \n 루트에 맞춰서 \n 진행이 가능합니다.</string>
     <string name="count_frist_ment">Start with \n click</string>
     <string name="fix_goal_list_btn">주간 목표 수정</string>
+
+    <string name="google">Sign up with GooGle </string>
+    <string name="default_web_client_id">1049105184524-o2gm24qi3j0pao9tlf7fhpl2r90o6oab.apps.googleusercontent.com</string>
 </resources>
