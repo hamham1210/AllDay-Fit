@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/view_corner_10"
-    android:backgroundTint="@color/light_blue"
+    android:backgroundTint="@color/white"
     android:padding="15dp"
     tools:context=".dietrecord.DietRecordAddDialog">
 
@@ -13,6 +13,7 @@
         android:id="@+id/dialog_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="100dp"
         android:text="@string/diet_record_dialog_title"
         android:textSize="@dimen/text_size_very_large"
         android:textStyle="bold"
@@ -60,7 +61,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/meal_listview"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
         app:layout_constraintBottom_toTopOf="@id/meal_edit"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +87,6 @@
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="13dp"
         android:background="@color/none"
         android:contentDescription="@string/diet_record_add_btn_desc"
         android:minWidth="48dp"

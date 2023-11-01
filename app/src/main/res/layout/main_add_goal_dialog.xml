@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/none"
-    tools:context=".exercisestatus.ExerciseStatusAddGoalDialog">
+    tools:context=".main.ExerciseStatusAddGoalDialog">
 
     <View
         android:id="@+id/goal_list_deco"

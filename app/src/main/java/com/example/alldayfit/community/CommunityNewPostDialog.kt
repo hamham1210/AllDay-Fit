@@ -28,15 +28,31 @@ class CommunityNewPostDialog(private var viewModel: CommunityViewModel): DialogF
         _binding =
             CommunityNewpostDialogBinding.inflate(inflater, container, false)
         val view = binding.root
-        binding.btnClose.setOnClickListener {
-            dismiss()
-        }
         binding.btnWrite.setOnClickListener {
-            val currentDate = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault()).format(Date())
-           comment = CommunityModel(binding.etTitle.text.toString(),binding.etInfo.text.toString(),currentDate)
-            viewModel.addcomment(comment)
+            if (binding.etTitle.text.toString().isEmpty()){
+
+            }
+            else {
+                comment = CommunityModel(
+                    binding.etTitle.text.toString(),
+                    binding.etInfo.text.toString(),
+                    viewModel.currentDate()
+                )
+                viewModel.addcomment(comment)
+                Log.d("fhkfldjlf", comment.toString())
+                dismiss()
+            }
+        }
+        exit()
+        return (view)
+    }
+
+    fun exit ()= with(binding){
+        btnClose.setOnClickListener {
             dismiss()
         }
-        return (view)
+        btnCancel.setOnClickListener {
+            dismiss()
+        }
     }
 }
