@@ -18,10 +18,12 @@ class CommunityViewModel : ViewModel() {
     fun addcomment(communityModel: CommunityModel) {
         communityEditlist.add(communityModel)
         communityLivedata.value = communityEditlist
+    }
 
-    fun currentDate(): String{
+    fun currentDate(): String {
         val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
         return currentDate
     }
+
 
 }

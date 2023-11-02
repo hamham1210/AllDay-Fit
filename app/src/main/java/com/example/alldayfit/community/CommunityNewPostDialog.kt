@@ -6,12 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.ViewModelProvider
 import com.example.alldayfit.databinding.CommunityNewpostDialogBinding
-import com.example.alldayfit.exercisestatus.BodyStatusViewModel
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+
 
 
 class CommunityNewPostDialog(private var viewModel: CommunityViewModel): DialogFragment() {
@@ -39,7 +35,6 @@ class CommunityNewPostDialog(private var viewModel: CommunityViewModel): DialogF
                     viewModel.currentDate()
                 )
                 viewModel.addcomment(comment)
-                Log.d("fhkfldjlf", comment.toString())
                 dismiss()
             }
         }
