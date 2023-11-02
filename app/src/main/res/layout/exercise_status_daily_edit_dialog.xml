@@ -1,71 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/blue"
     android:padding="10dp"
     tools:context=".exercisestatus.ExerciseStatusDailyEditDialog">
-
-    <TextView
-        android:id="@+id/date_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="2023.10.24"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_medium"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:background="@color/none"
-        android:contentDescription="@string/subtract_day_btn_desc"
-        android:src="@drawable/ic_prev"
-        app:layout_constraintBottom_toBottomOf="@id/date_txt"
-        app:layout_constraintEnd_toStartOf="@id/date_txt"
-        app:layout_constraintTop_toTopOf="@id/date_txt"
-        app:tint="@color/white" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:background="@color/none"
-        android:contentDescription="@string/subtract_day_btn_desc"
-        android:src="@drawable/ic_next"
-        app:layout_constraintBottom_toBottomOf="@id/date_txt"
-        app:layout_constraintStart_toEndOf="@id/date_txt"
-        app:layout_constraintTop_toTopOf="@id/date_txt"
-        app:tint="@color/white" />
-
-    <ImageButton
-        android:id="@+id/close_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/none"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        android:src="@drawable/ic_close"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/user_condition_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="홍현민의 오늘 상태"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_very_large"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:text="홍현민의 프로필"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/date_txt" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/close_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@color/none"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintBottom_toBottomOf="@+id/user_condition_txt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/user_condition_txt"
+        app:layout_constraintTop_toTopOf="@+id/user_condition_txt" />
 
     <LinearLayout
         android:id="@+id/user_status_wrap"
@@ -73,73 +39,126 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5dp"
         android:layout_marginTop="25dp"
-        android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/user_condition_txt">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="GENDER"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_man"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="남자"
+                android:textSize="@dimen/text_size_very_small" />
+
+            <View
+                android:layout_width="60dp"
+                android:layout_height="0dp" />
+
+            <RadioButton
+                android:id="@+id/radio_women"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="여자"
+                android:textSize="@dimen/text_size_very_small" />
+        </RadioGroup>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="HEIGHT"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:orientation="horizontal">
 
-            <include
-                android:id="@+id/status_weight_view"
-                layout="@layout/exercise_status_user_input_item" />
+            <EditText
+                android:id="@+id/et_height"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:textSize="@dimen/text_size_very_small" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <include
-                android:id="@+id/status_height_view"
-                layout="@layout/exercise_status_user_input_item" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <include
-                android:id="@+id/status_bmi_view"
-                layout="@layout/exercise_status_user_item" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cm"
+                android:textSize="@dimen/text_size_very_small"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <View
             android:layout_width="0dp"
             android:layout_height="15dp" />
 
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="WEIGHT"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:orientation="horizontal">
 
-            <include
-                android:id="@+id/status_exercise_time_view"
-                layout="@layout/exercise_status_user_item" />
+            <EditText
+                android:id="@+id/et_weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:textSize="@dimen/text_size_very_small" />
 
-            <View
-                android:layout_width="15dp"
-                android:layout_height="0dp" />
-
-            <include
-                android:id="@+id/status_calorie_consumption_view"
-                layout="@layout/exercise_status_user_item" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kg"
+                android:textSize="@dimen/text_size_very_small"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
     <android.widget.Button
         android:id="@+id/correction_complete"
-        android:layout_width="170dp"
+        android:layout_width="130dp"
         android:layout_height="45dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/exercise_status_fix_btn_shape"
         android:text="수정완료"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="@dimen/text_size_small"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/user_status_wrap" />
 
