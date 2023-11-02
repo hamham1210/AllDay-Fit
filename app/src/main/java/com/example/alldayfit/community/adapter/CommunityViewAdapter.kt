@@ -13,7 +13,6 @@ import com.example.alldayfit.community.CommunityModel
 import com.example.alldayfit.community.CommunityViewModel
 import com.example.alldayfit.databinding.CommunityItemsBinding
 
-
 class CommunityViewAdapter(private var viewModel: CommunityViewModel) :
     ListAdapter<CommunityModel, CommunityViewAdapter.HomeHolder>(diffUtil) {
 
