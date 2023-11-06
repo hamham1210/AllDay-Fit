@@ -21,9 +21,7 @@ class CommunityViewModel : ViewModel() {
     }
 
     fun currentDate(): String {
-        val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
-        return currentDate
+            val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+            return currentDate
+        }
     }
-
-
-}
