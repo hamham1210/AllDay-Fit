@@ -1,11 +1,12 @@
 package com.example.alldayfit.community
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.alldayfit.community.model.CommunityModel
 import com.example.alldayfit.databinding.CommunityNewpostDialogBinding
 
 
@@ -14,8 +15,7 @@ class CommunityNewPostDialog(private var viewModel: CommunityViewModel): DialogF
     private var _binding: CommunityNewpostDialogBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var comment :CommunityModel
-
+    private lateinit var comment: CommunityModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,15 +25,14 @@ class CommunityNewPostDialog(private var viewModel: CommunityViewModel): DialogF
             CommunityNewpostDialogBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.btnWrite.setOnClickListener {
-            if (binding.etTitle.text.toString().isEmpty()){
+            if (binding.etTitle.text.toString().isEmpty()) {
 
-            }
-            else {
+            } else {
                 comment = CommunityModel(
+                    "Temporary UI",
                     binding.etTitle.text.toString(),
                     binding.etInfo.text.toString(),
-                    viewModel.currentDate()
-                )
+                    viewModel.currentDate())
                 viewModel.addcomment(comment)
                 dismiss()
             }
@@ -42,7 +41,7 @@ class CommunityNewPostDialog(private var viewModel: CommunityViewModel): DialogF
         return (view)
     }
 
-    fun exit ()= with(binding){
+    fun exit() = with(binding) {
         btnClose.setOnClickListener {
             dismiss()
         }

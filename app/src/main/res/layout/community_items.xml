@@ -68,33 +68,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_nickname" />
 
-<!--    <android.widget.Button-->
-<!--        android:id="@+id/btn_amend"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="48dp"-->
-<!--        android:layout_marginHorizontal="15dp"-->
-<!--        android:background="@drawable/button_radius"-->
-<!--        android:backgroundTint="@color/dark_blue"-->
-<!--        android:text="@string/community_btn_amend"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textSize="@dimen/text_size_very_small"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintDimensionRatio="2:1"-->
-<!--        app:layout_constraintEnd_toStartOf="@id/btn_delete"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/tv_info" />-->
+    <android.widget.Button
+        android:id="@+id/btn_amen"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="250dp"
+        android:background="@drawable/button_radius"
+        android:backgroundTint="@color/dark_blue"
+        android:text="@string/community_btn_amend"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_very_small"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toStartOf="@id/btn_delete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_info" />
 
-<!--    <android.widget.Button-->
-<!--        android:id="@+id/btn_delete"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="48dp"-->
-<!--        android:layout_marginHorizontal="5dp"-->
-<!--        android:background="@drawable/button_radius2"-->
-<!--        android:backgroundTint="@color/gray"-->
-<!--        android:text="@string/community_btn_delete"-->
-<!--        android:textSize="@dimen/text_size_very_small"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintDimensionRatio="2:1"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/tv_info" />-->
+    <android.widget.Button
+        android:id="@+id/btn_delete"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/button_radius2"
+        android:backgroundTint="@color/gray"
+        android:text="@string/community_btn_delete"
+        android:textSize="@dimen/text_size_very_small"
+        app:layout_constraintDimensionRatio="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_amen"
+        app:layout_constraintTop_toBottomOf="@id/tv_info" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
