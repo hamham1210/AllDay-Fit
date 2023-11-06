@@ -37,8 +37,8 @@ class ExerciseStatusFragment : Fragment() {
 
         viewModel.bodyStatus.observe(viewLifecycleOwner) { bodyStatus ->
             // 라이브 데이터 변경 감지
-            binding.statusWeightView.statusMetricsTxt.text = "${bodyStatus.weight}"
-            binding.statusHeightView.statusMetricsTxt.text = " ${bodyStatus.height}"
+            binding.statusWeightView.text = "${bodyStatus.weight}"
+            binding.statusHeightView.text = " ${bodyStatus.height}"
         }
 
 
@@ -51,21 +51,10 @@ class ExerciseStatusFragment : Fragment() {
     }
 
     private fun initView() = with(binding) {
-        /*  아이템 text 초기 설정*/
-        statusWeightView.statusTypeTxt.text = getString(R.string.weight)
-        statusHeightView.statusTypeTxt.text = getString(R.string.height)
-        statusBmiView.statusTypeTxt.text = getString(R.string.bmi)
-        statusExerciseTimeView.statusTypeTxt.text = getString(R.string.exercise_time)
-        statusCalorieConsumptionView.statusTypeTxt.text = getString(R.string.calorie_consumption)
-        statusCalorieConsumptionView.statusTypeTxt.textSize = 13F
-
         // 수정 버튼 클릭 시 해당 dialog 뜨위기
         fixed.setOnClickListener {
             showDialog(R.id.action_exerciseStatusFragment_to_exerciseStatusDailyEditDialog)
         }
-//        goalListFixBtn.setOnClickListener {
-//            showDialog(R.id.action_exerciseStatusFragment_to_exerciseStatusAddGoalDialog)
-//        }
     }
 
     override fun onDestroyView() {

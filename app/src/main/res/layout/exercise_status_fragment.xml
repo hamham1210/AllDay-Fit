@@ -112,6 +112,7 @@
             app:layout_constraintTop_toTopOf="@id/height_back" />
 
         <TextView
+            android:id="@+id/status_height_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="80dp"
@@ -146,6 +147,7 @@
             app:layout_constraintTop_toTopOf="@id/weight_back" />
 
         <TextView
+            android:id="@+id/status_weight_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="80dp"
@@ -239,7 +241,7 @@
             android:id="@+id/string_bmi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="45dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="20dp"
             android:text="@string/bmi"
             android:textAlignment="center"
@@ -291,7 +293,7 @@
             android:layout_marginTop="20dp"
             android:src="@drawable/gray_stroke_white_back_shape"
             app:layout_constraintBottom_toTopOf="@+id/my_rank_detail"
-            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintDimensionRatio="1.5"
             app:layout_constraintEnd_toStartOf="@id/rank_third"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/rank_first"
@@ -302,7 +304,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="33dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="5dp"
             android:src="@drawable/ic_star"
             app:layout_constraintStart_toStartOf="@id/rank_second"
             app:layout_constraintTop_toTopOf="@id/rank_second" />
@@ -312,7 +314,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="5dp"
             android:src="@drawable/ic_star"
             app:layout_constraintStart_toEndOf="@id/ic_second_star1"
             app:layout_constraintTop_toTopOf="@id/rank_second" />
@@ -321,7 +323,7 @@
             android:id="@+id/title_second"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text="2위"
             app:layout_constraintEnd_toEndOf="@id/rank_second"
             app:layout_constraintStart_toStartOf="@id/rank_second"
@@ -343,7 +345,7 @@
             android:layout_marginStart="130dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/gray_stroke_white_back_shape"
-            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintDimensionRatio="1.5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/rank_second"
             app:layout_constraintTop_toTopOf="@+id/rank_first"
@@ -354,7 +356,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="5dp"
             android:src="@drawable/ic_star"
             app:layout_constraintStart_toStartOf="@+id/rank_third"
             app:layout_constraintTop_toTopOf="@+id/rank_third" />
@@ -363,7 +365,7 @@
             android:id="@+id/title_third"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text="3위"
             app:layout_constraintEnd_toEndOf="@id/ic_third_star1"
             app:layout_constraintStart_toStartOf="@id/ic_third_star1"
@@ -384,15 +386,13 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginHorizontal="125dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="25dp"
             android:src="@drawable/gray_stroke_white_back_shape"
             app:layout_constraintBottom_toTopOf="@+id/my_rank_detail"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.518"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/user_exercise_status_txt"
-            app:layout_constraintVertical_bias="0.0"
             app:tint="@color/orange" />
 
         <ImageView
@@ -400,7 +400,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="15dp"
             android:src="@drawable/ic_star"
             app:layout_constraintStart_toStartOf="@+id/rank_first"
             app:layout_constraintTop_toTopOf="@+id/rank_first" />
@@ -410,7 +410,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="5dp"
             android:src="@drawable/ic_star"
             app:layout_constraintStart_toEndOf="@id/ic_first_star1"
             app:layout_constraintTop_toTopOf="@+id/rank_first" />
@@ -420,7 +420,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="15dp"
             android:src="@drawable/ic_star"
             app:layout_constraintStart_toEndOf="@id/ic_first_star2"
             app:layout_constraintTop_toTopOf="@+id/rank_first" />
@@ -429,7 +429,7 @@
             android:id="@+id/title_first"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:text="1위"
             app:layout_constraintEnd_toEndOf="@id/rank_first"
             app:layout_constraintStart_toStartOf="@id/rank_first"
@@ -448,7 +448,7 @@
             android:id="@+id/my_rank_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text="내 운동 순위 상세보기"
             app:layout_constraintStart_toStartOf="@id/rank_second"
             app:layout_constraintTop_toBottomOf="@id/rank_second" />
