@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.alldayfit.R
 import com.example.alldayfit.databinding.ExerciseStatusDailyEditDialogBinding
 
-class BodyStatusDialog: DialogFragment() {
+class BodyStatusDialog : DialogFragment() {
     private var _binding: ExerciseStatusDailyEditDialogBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: BodyStatusViewModel
@@ -20,6 +20,7 @@ class BodyStatusDialog: DialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = ExerciseStatusDailyEditDialogBinding.inflate(inflater, container, false)
+        initView()
 //        initView()
 
 
@@ -40,17 +41,27 @@ class BodyStatusDialog: DialogFragment() {
             dismiss()
         }
 
-
-
-
-//        val view = inflater.inflate(R.layout.exercise_status_daily_edit_dialog, container, false)
-//        // 다이얼로그 크기 조절
-//        dialog?.window?.setLayout(380, 530)
-//        return view
-
         return binding.root
+    }
+    /* dialog design, data 초기 설정 */
+    private fun initView() = with(binding) {
+        statusWeightView.statusTypeTxt.text = getString(R.string.weight)
+        statusHeightView.statusTypeTxt.text = getString(R.string.height)
+        statusBmiView.statusTypeTxt.text = getString(R.string.bmi)
+        statusExerciseTimeView.statusTypeTxt.text = getString(R.string.exercise_time)
+        statusCalorieConsumptionView.statusTypeTxt.text = getString(R.string.calorie_consumption)
+        statusCalorieConsumptionView.statusTypeTxt.textSize = 13F
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupView()
+    }
 
+    private fun setupView() = with(binding) {
+        closeBtn.setOnClickListener {
+            dismiss()
+        }
     }
 
 }

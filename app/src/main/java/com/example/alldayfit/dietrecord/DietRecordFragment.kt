@@ -1,50 +1,26 @@
 package com.example.alldayfit.dietrecord
 
-import android.Manifest
-import android.app.Activity.RESULT_OK
-import android.app.AlertDialog
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.example.alldayfit.R
-import com.example.alldayfit.databinding.DietRecordAddDialogBinding
 import com.example.alldayfit.databinding.DietRecordFragmentBinding
+import com.example.alldayfit.databinding.DietRecordMealItemBinding
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
-import com.example.alldayfit.dietrecord.adapter.DietRecordAdapter
-import java.io.File
 
 class DietRecordFragment : Fragment() {
     private var _binding: DietRecordFragmentBinding? = null
     private val binding get() = _binding!!
-    private val dietRecordsList: MutableList<String> = mutableListOf()
     private lateinit var dietRecordChart: BarChart
-//    private lateinit var recyclerView: RecyclerView
-//    private lateinit var dietRecordAdapter: DietRecordAdapter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -102,27 +78,38 @@ class DietRecordFragment : Fragment() {
         return entries
     }
 
+    /* fragment design, data 초기 설정 */
     private fun initView() = with(binding) {
         /* 식사 위젯, 칼로리 수치 아이템 text 초기 설정*/
-//        carbohydratesView.analysisTxt.text = getString(R.string.carbohydrates)
-//        proteinView.analysisTxt.text = getString(R.string.protein)
-//        fatView.analysisTxt.text = getString(R.string.fat)
-//        caloriesView.analysisTxt.text = getString(R.string.calories)
-        /* 위젯 클릭 이벤트 효과 추가 */
-        /* 식사(아침,점심,저녁,간식) 이미지 클릭 시 다이얼로그 표시 */
-        breakfastView.addMealView.setOnClickListener { showDialog(R.id.action_dietRecordFragment_to_dietRecordAddDialog) }
-        lunchView.addMealView.setOnClickListener { showDialog(R.id.action_dietRecordFragment_to_dietRecordAddDialog) }
-        dinnerView.addMealView.setOnClickListener { showDialog(R.id.action_dietRecordFragment_to_dietRecordAddDialog) }
-        snackView.addMealView.setOnClickListener { showDialog(R.id.action_dietRecordFragment_to_dietRecordAddDialog) }
+        breakfastView.mealTxt.text = getString(R.string.diet_record_breakfast)
+        lunchView.mealTxt.text = getString(R.string.diet_record_lunch)
+        dinnerView.mealTxt.text = getString(R.string.diet_record_dinner)
+        snackView.mealTxt.text = getString(R.string.diet_record_snack)
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        recyclerView = view.findViewById(R.id.meal_listview)
-//        dietRecordAdapter = DietRecordAdapter(dietRecordsList)
-//
-//        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-//        recyclerView.adapter = dietRecordAdapter
+        setupView()
+    }
+
+    private fun setupView() = with(binding) {
+        /* 식사(아침,점심,저녁,간식) 이미지 클릭 시 다이얼로그 표시 */
+        showDietAddDialog(breakfastView)
+        showDietAddDialog(lunchView)
+        showDietAddDialog(dinnerView)
+        showDietAddDialog(snackView)
+    }
+
+    /* main_graph의 action을 활용해서 dialog 띄우기 */
+    private fun showDietAddDialog(view: DietRecordMealItemBinding) {
+        view.addMealView.setOnClickListener {
+            findNavController().navigate(
+                DietRecordFragmentDirections.actionDietRecordFragmentToDietRecordAddDialog(
+                    view.mealTxt.text.toString()
+                )
+            )
+        }
     }
 
     override fun onDestroyView() {
@@ -130,12 +117,4 @@ class DietRecordFragment : Fragment() {
         _binding = null
     }
 
-    /* main_graph의 action을 활용해서 dialog 띄우기 */
-    private fun showDialog(action: Int) {
-        findNavController().navigate(action)
-    }
-
-    companion object {
-        fun newInstance() = DietRecordFragment()
-    }
 }
