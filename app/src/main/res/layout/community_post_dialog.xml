@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="360dp"
-    android:layout_height="510dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@drawable/dialog_radius"
     android:padding="10dp">
@@ -59,16 +59,15 @@
         app:layout_constraintStart_toStartOf="@id/tv_title"
         app:layout_constraintTop_toBottomOf="@+id/ic_user" />
 
-    <EditText
+    <TextView
         android:id="@+id/et_info"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@color/light_blue"
         android:gravity="top"
-        android:hint="게시글을 작성해주세요."
-        android:inputType="text"
         android:padding="10dp"
+        android:minHeight="300dp"
         android:text=""
         android:textSize="@dimen/text_size_very_small"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -83,7 +82,9 @@
         android:background="@android:color/transparent"
         android:minWidth="48dp"
         android:minHeight="48dp"
+        android:layout_marginStart="200dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_title"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_close" />
 

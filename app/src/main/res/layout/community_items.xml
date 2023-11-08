@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:maxHeight="190dp"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:id="@+id/community_content">
 
     <ImageView
         android:id="@+id/ic_user"
@@ -59,7 +60,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
-        android:maxLines="3"
+        android:maxLines="2"
         android:padding="5dp"
         android:text="글의 내용을 적어두기"
         android:textSize="@dimen/text_size_small"
@@ -73,6 +74,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="250dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/button_radius"
         android:backgroundTint="@color/dark_blue"
         android:text="@string/community_btn_amend"
@@ -90,10 +92,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/button_radius2"
         android:backgroundTint="@color/gray"
         android:text="@string/community_btn_delete"
         android:textSize="@dimen/text_size_very_small"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_amen"
