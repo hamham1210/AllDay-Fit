@@ -51,6 +51,7 @@ class CommunityEditDialog(private var viewModel: CommunityViewModel) : DialogFra
                 viewModel.changeComment(editComment)
                     val newPostion = viewModel.getSelectedPosition()
                 viewModel.updateItemInCommunityList(newPostion)
+                //커뮤니티 데이터 추가
                 dismiss()
             }
         }

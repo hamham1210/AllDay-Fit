@@ -36,6 +36,7 @@ class CommunityHomeFragment : Fragment() {
         viewModel.communityLivedata.observe(viewLifecycleOwner, Observer { data ->
             adapter.setData(data)
         })
+        //커뮤니티 라이브데이터 관찰
         return binding.root
     }
 
