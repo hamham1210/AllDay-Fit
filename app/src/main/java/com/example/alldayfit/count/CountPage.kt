@@ -5,36 +5,25 @@ import ExerciseRecordAdapter
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.os.SystemClock
-import android.util.Log
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alldayfit.R
 import com.example.alldayfit.databinding.CountPageActivityBinding
 import com.example.alldayfit.main.MainFragment
 
 
+
 class CountPage : AppCompatActivity() {
     private lateinit var mBinding: CountPageActivityBinding
     private var timerRunning = false
-    private var lastClickTime: Long = 0
+    private lateinit var countDownTimer: CountDownTimer
 
     //리사이클러뷰 및 어댑터 초기화
     val exerciseRecords = mutableListOf<ExerciseRecord>()
     val adapter = ExerciseRecordAdapter(exerciseRecords)
-
-//    private var rainbow = GradientDrawable(
-//        GradientDrawable.Orientation.TL_BR,
-//        intArrayOf(
-//            Color.RED,
-//            Color.MAGENTA,
-//            Color.BLUE,
-//            Color.CYAN,
-//            Color.GREEN,
-//            Color.YELLOW,
-//            Color.RED,
-//        )
-//    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,25 +40,40 @@ class CountPage : AppCompatActivity() {
             countDialog.show(supportFragmentManager, "CountDialogFragment")
         }
 
-
-
-        mBinding.count.setOnClickListener {
+        // 시작 버튼을 누르면 타이머 시작
+        mBinding.btnStart.setOnClickListener {
+            mBinding.btnRest.visibility = View.VISIBLE
             clickTimer()
-            val clickTime = System.currentTimeMillis()
+        }
 
-            if (clickTime - lastClickTime <= DOUBLE_CLICK_TIME_DELTA) {
-                // 더블클릭 시 화면에 TextView 표시
-                mBinding.finishTextView.visibility = View.VISIBLE
-                mBinding.timer.visibility = View.INVISIBLE
-                // 스톱워치 종료 후 다시 클릭해도 반응 없게하는 코드
-                mBinding.count.isEnabled = false
-                mBinding.count.setImageResource(R.drawable.circle_orange_back_shape)
-                mBinding.rest.visibility = View.GONE
-                mBinding.setRootine.visibility = View.GONE
-                mBinding.btnMoreExercise.visibility = View.VISIBLE
-                mBinding.btnFinishExercise.visibility = View.VISIBLE
+        // 휴식 버튼 눌렀을 때 카운트 다운 시작
+        mBinding.btnRest.setOnClickListener {
+            stopTimer()
+            startCountDown()
+
+            mBinding.rvCount.visibility = View.VISIBLE
+            // 클릭한 순간의 타이머 값을 타임스탬프로 사용
+            val exerciseRecord = ExerciseRecord(mBinding.timer.text.toString())
+            // 리스트에 기록 추가
+            exerciseRecords.add(exerciseRecord)
+            // 어댑터에 데이터 변경 알림
+            adapter.notifyDataSetChanged()
+        }
+
+        // 종료 버튼을 누르면 타이머 종료
+        mBinding.btnFinish.setOnClickListener {
+            if (!timerRunning) { // 타이머가 진행 중일 때만 실행
+                mBinding.rvCount.visibility = View.VISIBLE
+
+                // 종료할 때 마지막 타이머 기록 저장
+                val exerciseRecord = ExerciseRecord(mBinding.timer.text.toString())
+                exerciseRecords.add(exerciseRecord)
+                adapter.notifyDataSetChanged()
+
+                finishView()
+            } else {
+                finishView()
             }
-            lastClickTime = clickTime
         }
 
         //시간을 00:00:00 으로 보이게 하는 코드
@@ -101,7 +105,17 @@ class CountPage : AppCompatActivity() {
             fragmentTrasaction.commit()
         }
 
+        // back 버튼 클릭 시 메인화면으로 이동
+        mBinding.back.setOnClickListener {
+            val fagmentManager = supportFragmentManager
+            val fragmentTrasaction = fagmentManager.beginTransaction()
 
+            val mainFragment = MainFragment()
+            fragmentTrasaction.replace(R.id.main_fragment, mainFragment)
+
+            fragmentTrasaction.addToBackStack(null)
+            fragmentTrasaction.commit()
+        }
     }
 
     private fun clickTimer() {
@@ -111,22 +125,12 @@ class CountPage : AppCompatActivity() {
             mBinding.setRootine.visibility = View.INVISIBLE
             mBinding.timer.visibility = View.VISIBLE
         } else {
-            mBinding.rest.visibility = View.VISIBLE
-            mBinding.count.setImageResource(R.drawable.circle_orange_back_shape)
-            mBinding.rvCount.visibility = View.VISIBLE
-
-            // 클릭한 순간의 타이머 값을 타임스탬프로 사용
-            val timestamp = SystemClock.elapsedRealtime() - mBinding.timer.base
-            val exerciseRecord = ExerciseRecord(mBinding.timer.text.toString())
-
-            // 리스트에 기록 추가
-            exerciseRecords.add(exerciseRecord)
-
-            // 어댑터에 데이터 변경 알림
-            adapter.notifyDataSetChanged()
+            startCountDown()
+            stopTimer()
         }
         timerRunning = !timerRunning
     }
+
 
     private fun startTimer() {
         mBinding.timer.base = SystemClock.elapsedRealtime()
@@ -137,8 +141,60 @@ class CountPage : AppCompatActivity() {
         mBinding.timer.stop()
     }
 
-    companion object {
-        private const val DOUBLE_CLICK_TIME_DELTA: Long = 300 // 더블클릭 간격
+    private fun startCountDown() {
+        mBinding.rest.visibility = View.VISIBLE
+        mBinding.count.setImageResource(R.drawable.circle_orange_back_shape)
+        mBinding.rest.setTextColor(ContextCompat.getColor(this, R.color.orange))
+        mBinding.timer.setTextColor(ContextCompat.getColor(this, R.color.orange))
+
+        // countdown이 시작되면 버튼 비활성화
+        mBinding.btnRest.isEnabled = false
+        mBinding.btnStart.isEnabled = false
+
+        countDownTimer = object : CountDownTimer(46000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                // 남은 시간을 HH:mm:ss 형식으로 변환
+                val formattedTime = formatTime(millisUntilFinished)
+                mBinding.timer.text = formattedTime
+            }
+
+            override fun onFinish() {
+                if(mBinding.finishTextView.visibility == View.VISIBLE){
+                    return
+                }
+                startTimer()
+                timerRunning = !timerRunning
+                // countdown이 끝나면 버튼 다시 활성화
+                mBinding.btnRest.isEnabled = true
+                // 타이머가 완료되면 호출되는 메서드
+                mBinding.timer.text = "00:00:00"
+                mBinding.rest.visibility = View.INVISIBLE
+                mBinding.count.setImageResource(R.drawable.circle_blue_back_shape)
+                mBinding.timer.setTextColor(ContextCompat.getColor(this@CountPage, R.color.blue))
+            }
+        }
+        countDownTimer.start()
     }
 
+    private fun formatTime(millis: Long): String {
+        val seconds = millis / 1000
+        val hours = seconds / 3600
+        val minutes = (seconds % 3600) / 60
+        val remainingSeconds = seconds % 60
+
+        return String.format("%02d:%02d:%02d", hours, minutes, remainingSeconds)
+    }
+
+    private fun finishView(){
+        mBinding.finishTextView.visibility = View.VISIBLE
+        mBinding.timer.visibility = View.INVISIBLE
+        mBinding.count.setImageResource(R.drawable.circle_blue_back_shape) //Todo 무지개 테두리로 변경
+
+        // 스톱워치 종료 후 다시 클릭해도 반응 없게하는 코드
+        mBinding.btnFinish.isEnabled = false
+        mBinding.rest.visibility = View.GONE
+        mBinding.setRootine.visibility = View.GONE
+        mBinding.btnMoreExercise.visibility = View.VISIBLE
+        mBinding.btnFinishExercise.visibility = View.VISIBLE
+    }
 }

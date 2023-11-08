@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.alldayfit.R
 import com.example.alldayfit.databinding.DietRecordFragmentBinding
 import com.example.alldayfit.databinding.DietRecordMealItemBinding
+import com.example.alldayfit.main.MainViewModel
+import com.example.alldayfit.main.MainViewModelFactory
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
@@ -21,6 +24,12 @@ class DietRecordFragment : Fragment() {
     private var _binding: DietRecordFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var dietRecordChart: BarChart
+    private val viewModel : DietRecordViewModel by lazy {
+        ViewModelProvider(
+            this,
+            DietRecordViewModelFactory()
+        )[DietRecordViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -95,18 +104,18 @@ class DietRecordFragment : Fragment() {
 
     private fun setupView() = with(binding) {
         /* 식사(아침,점심,저녁,간식) 이미지 클릭 시 다이얼로그 표시 */
-        showDietAddDialog(breakfastView)
-        showDietAddDialog(lunchView)
-        showDietAddDialog(dinnerView)
-        showDietAddDialog(snackView)
+        breakfastView.showDietAddDialog()
+        lunchView.showDietAddDialog()
+        dinnerView.showDietAddDialog()
+        snackView.showDietAddDialog()
     }
 
     /* main_graph의 action을 활용해서 dialog 띄우기 */
-    private fun showDietAddDialog(view: DietRecordMealItemBinding) {
-        view.addMealView.setOnClickListener {
+    private fun DietRecordMealItemBinding.showDietAddDialog() {
+        this.addMealView.setOnClickListener {
             findNavController().navigate(
                 DietRecordFragmentDirections.actionDietRecordFragmentToDietRecordAddDialog(
-                    view.mealTxt.text.toString()
+                    this.mealTxt.text.toString()
                 )
             )
         }
