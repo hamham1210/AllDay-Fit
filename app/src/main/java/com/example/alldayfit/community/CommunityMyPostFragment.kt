@@ -1,17 +1,19 @@
 package com.example.alldayfit.community;
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.alldayfit.R
 import com.example.alldayfit.community.adapter.CommunityMyPostAdapter
+import com.example.alldayfit.community.model.CommunityModel
 import com.example.alldayfit.databinding.CommunityMypostFragmentBinding
-import com.example.alldayfit.main.adapter.GoalAdapter
 
 
 class CommunityMyPostFragment : Fragment() {
@@ -27,11 +29,11 @@ class CommunityMyPostFragment : Fragment() {
     ): View {
         _binding = CommunityMypostFragmentBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(requireActivity()).get(CommunityViewModel::class.java)
-        adapter = CommunityMyPostAdapter(viewModel)
+        adapter = CommunityMyPostAdapter(viewModel,childFragmentManager)
         binding.recyclerview.adapter = adapter
         binding.recyclerview.layoutManager = LinearLayoutManager(context)
-        viewModel.communityLivedata.observe(viewLifecycleOwner, Observer {
-            data -> adapter.setData(data)
+        viewModel.communitymydata.observe(viewLifecycleOwner, Observer { data ->
+            adapter.setData(data)
         })
         return binding.root
     }

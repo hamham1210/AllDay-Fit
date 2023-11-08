@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.alldayfit.community.model.CommunityModel
@@ -25,11 +26,11 @@ class CommunityNewPostDialog(private var viewModel: CommunityViewModel): DialogF
             CommunityNewpostDialogBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.btnWrite.setOnClickListener {
-            if (binding.etTitle.text.toString().isEmpty()) {
-
+            if (binding.etTitle.text.toString().isEmpty()or binding.etInfo.text.toString().isEmpty()) {
+                Toast.makeText(requireContext(), "내용을 입력해주세요.", Toast.LENGTH_SHORT).show()
             } else {
                 comment = CommunityModel(
-                    "Temporary UI",
+//                    "Temporary UI",
                     binding.etTitle.text.toString(),
                     binding.etInfo.text.toString(),
                     viewModel.currentDate())
@@ -37,8 +38,11 @@ class CommunityNewPostDialog(private var viewModel: CommunityViewModel): DialogF
                 dismiss()
             }
         }
+        binding.btnCancel.setOnClickListener {
+            dismiss() // 다이얼로그 닫기
+        }
         exit()
-        return (view)
+        return view
     }
 
     fun exit() = with(binding) {

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import com.example.alldayfit.community.adapter.CommunityViewAdapter
 import com.example.alldayfit.databinding.CommunityHomeFragmentBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class CommunityHomeFragment : Fragment() {
     private var _binding: CommunityHomeFragmentBinding? = null
@@ -29,7 +30,7 @@ class CommunityHomeFragment : Fragment() {
     ): View {
         _binding = CommunityHomeFragmentBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(requireActivity()).get(CommunityViewModel::class.java)
-        adapter = CommunityViewAdapter(viewModel)
+        adapter = CommunityViewAdapter(viewModel,childFragmentManager)
         binding.recyclerview.adapter = adapter
         binding.recyclerview.layoutManager = LinearLayoutManager(context)
         viewModel.communityLivedata.observe(viewLifecycleOwner, Observer { data ->
@@ -44,7 +45,14 @@ class CommunityHomeFragment : Fragment() {
         _binding = null
     }
 
-    companion object{
-        fun newInstance() = CommunityHomeFragment()
+    companion object {
+        private var instance: CommunityHomeFragment? = null
+
+        fun newInstance(): CommunityHomeFragment {
+            if (instance == null) {
+                instance = CommunityHomeFragment()
+            }
+            return instance!!
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.alldayfit.community.adapter
 
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -20,7 +21,7 @@ class CommunityViewPagerAdapter(fragmentActivity: FragmentActivity) :
 
     fun getTitle(position: Int): Int = fragments[position].title
 
-    override fun getItemCount(): Int = fragments.size
+    override fun getItemCount(): Int = 2
 
     override fun createFragment(position: Int): Fragment = fragments[position].fragment
 }
