@@ -52,7 +52,8 @@
     <string name="weight">WEIGHT</string>
     <string name="height">HEIGHT</string>
     <string name="bmi">BMI</string>
-    <string name="calorie_consumption">CALORIE CONSUMPTION</string>
+    <string name="calorie_consumption">CALORIE\nCONSUMPTION</string>
+    <string name="exercise_status_week_goal">주간목표</string>
     <string name="exercise_status_user_state">나의 운동 상태</string>
     <string name="setting_dark_mode">다크모드</string>
     <string name="setting_app_noti">앱 알림 설정</string>
@@ -103,7 +104,7 @@
     <string name="calendar_title">Example 2</string>
     <string name="calendar_subtitle">Month header view, single selection, vertical scrolling, hides in and out dates.</string>
     <string name="activity_title_view">Calendar View Sample</string>
-    <string name="main_exercise_time">HEIGHT</string>
+    <string name="main_exercise_time">exercise\ntime</string>
     <string name="calendar">달력</string>
     <string name="user">유저</string>
     <string name="diet_record_add_btn_desc">식단 음식 추가</string>
