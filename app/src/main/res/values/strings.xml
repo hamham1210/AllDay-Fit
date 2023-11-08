@@ -105,6 +105,7 @@
     <string name="btn_more_exercise">운동 더하기</string>
     <string name="btn_finish_exercise">운동 끝내기</string>
 
+
     <string name="calendar_title">Example 2</string>
     <string name="calendar_subtitle">Month header view, single selection, vertical scrolling, hides in and out dates.</string>
     <string name="activity_title_view">Calendar View Sample</string>

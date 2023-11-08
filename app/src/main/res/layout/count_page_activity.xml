@@ -60,7 +60,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/rv_count"
         app:layout_constraintDimensionRatio="1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -119,12 +119,13 @@
         android:layout_marginTop="20dp"
         android:layout_marginHorizontal="30dp"
         tools:listitem="@layout/count_item"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_constraintlayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/count" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btn_constraintlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -170,5 +171,46 @@
             app:layout_constraintTop_toTopOf="@+id/btn_more_exercise" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <android.widget.Button
+        android:id="@+id/btn_finish"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/btn_circle_gray_counter"
+        android:text="종료"
+        app:layout_constraintBottom_toBottomOf="@+id/count"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/count"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <android.widget.Button
+        android:id="@+id/btn_start"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/btn_circle_blue_counter"
+        android:text="시작"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/count"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/count"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <android.widget.Button
+        android:id="@+id/btn_rest"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/btn_circle_orange_counter"
+        android:text="휴식"
+        android:visibility="invisible"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/count"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/count"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
