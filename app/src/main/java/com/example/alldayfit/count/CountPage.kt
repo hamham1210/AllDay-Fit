@@ -148,7 +148,7 @@ class CountPage : AppCompatActivity() {
         mBinding.btnRest.isEnabled = false
         mBinding.btnStart.isEnabled = false
 
-        countDownTimer = object : CountDownTimer(3000, 1000) {
+        countDownTimer = object : CountDownTimer(46000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 // 남은 시간을 HH:mm:ss 형식으로 변환
                 val formattedTime = formatTime(millisUntilFinished)
