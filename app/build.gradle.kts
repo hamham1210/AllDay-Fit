@@ -9,14 +9,7 @@ plugins {
 }
 
 android {
-    signingConfigs {
-        create("release") {
-            storeFile = file("C:\\Users\\hgymi\\Private\\android_key\\AllDayFitKey.jks")
-            storePassword = "gpfckd"
-            keyAlias = "key0"
-            keyPassword = "gpfckd"
-        }
-    }
+
     namespace = "com.example.alldayfit"
     compileSdk = 34
 
@@ -34,7 +27,7 @@ android {
         versionName = "0.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        signingConfig = signingConfigs.getByName("release")
+
     }
 
     buildTypes {
