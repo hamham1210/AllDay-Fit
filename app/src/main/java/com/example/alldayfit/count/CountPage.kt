@@ -63,12 +63,12 @@ class CountPage : AppCompatActivity() {
 
         // 종료 버튼을 누르면 타이머 종료
         mBinding.btnFinish.setOnClickListener {
+            saveRecyclerView()
+            if(!timerRunning){
+                saveRecyclerView()
+                finishView()
+            }
                 mBinding.rvCount.visibility = View.VISIBLE
-                // 종료할 때 마지막 타이머 기록 저장
-                val exerciseRecord = ExerciseRecord(mBinding.timer.text.toString())
-                exerciseRecords.add(exerciseRecord)
-                adapter.notifyDataSetChanged()
-
                 finishView()
         }
 
@@ -204,5 +204,13 @@ class CountPage : AppCompatActivity() {
         mBinding.btnStart.isEnabled = false
         mBinding.btnStart.visibility = View.VISIBLE
         mBinding.count.visibility = View.VISIBLE
+    }
+
+    private fun saveRecyclerView(){
+        mBinding.rvCount.visibility = View.VISIBLE
+        // 종료할 때 마지막 타이머 기록 저장
+        val exerciseRecord = ExerciseRecord(mBinding.timer.text.toString())
+        exerciseRecords.add(exerciseRecord)
+        adapter.notifyDataSetChanged()
     }
 }
