@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.alldayfit.community.model.CommunityModel
+import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.databinding.CommunityNewpostDialogBinding
 
 
@@ -16,7 +15,7 @@ class CommunityNewPostDialog(private var viewModel: CommunityViewModel): DialogF
     private var _binding: CommunityNewpostDialogBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var comment: CommunityModel
+    private lateinit var comment: CommunityPostEntity
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,11 +28,13 @@ class CommunityNewPostDialog(private var viewModel: CommunityViewModel): DialogF
             if (binding.etTitle.text.toString().isEmpty()or binding.etInfo.text.toString().isEmpty()) {
                 Toast.makeText(requireContext(), "내용을 입력해주세요.", Toast.LENGTH_SHORT).show()
             } else {
-                comment = CommunityModel(
-//                    "Temporary UI",
+                comment = CommunityPostEntity(
+                    "NTqKsmydkVOE9fWxxTolGDSkL7p2",
                     binding.etTitle.text.toString(),
-                    binding.etInfo.text.toString(),
-                    viewModel.currentDate())
+                    viewModel.currentDate(),
+                    "Temporary nk",
+                    binding.etInfo.text.toString()
+                    )
                 viewModel.addcomment(comment)
                 dismiss()
             }

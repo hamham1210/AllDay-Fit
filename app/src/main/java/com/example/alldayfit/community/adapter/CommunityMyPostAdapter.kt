@@ -1,25 +1,21 @@
 package com.example.alldayfit.community.adapter
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.alldayfit.R
 import com.example.alldayfit.community.CommunityEditDialog
-import com.example.alldayfit.community.CommunityNewPostDialog
-import com.example.alldayfit.community.CommunityPostDialog
-import com.example.alldayfit.community.model.CommunityModel
 import com.example.alldayfit.community.CommunityViewModel
+import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.databinding.CommunityItemsBinding
 
 class CommunityMyPostAdapter(private var viewModel: CommunityViewModel, private var fragmentManager: FragmentManager) :
-    ListAdapter<CommunityModel, CommunityMyPostAdapter.MyPostHolder>(diffUtil) {
+    ListAdapter<CommunityPostEntity, CommunityMyPostAdapter.MyPostHolder>(diffUtil) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyPostHolder {
@@ -37,9 +33,9 @@ class CommunityMyPostAdapter(private var viewModel: CommunityViewModel, private 
         holder.bind(data)
     }
 
-    fun updateItem(position: Int, communityModel: CommunityModel) {
+    fun updateItem(position: Int, communityPostEntity: CommunityPostEntity) {
         if (position >= 0 && position < currentList.size) {
-            currentList[position] = communityModel
+            currentList[position] = communityPostEntity
             notifyItemChanged(position)
         }
     }
@@ -57,11 +53,11 @@ class CommunityMyPostAdapter(private var viewModel: CommunityViewModel, private 
             }
 
 
-            fun bind(data: CommunityModel) {
+            fun bind(data: CommunityPostEntity) {
                 binding.apply {
                     tvTitle.text = data.title
-                    tvInfo.text = data.post
-                    tvDate.text = "작성일 : ${data.date}"
+                    tvInfo.text = data.content
+                    tvDate.text = "작성일 : ${data.postingDate}"
                     icUser.load(R.drawable.ic_user2)
                     //임시로 아이콘 넣음
                     tvNickname.text = "쫄튀"
@@ -82,25 +78,25 @@ class CommunityMyPostAdapter(private var viewModel: CommunityViewModel, private 
             return currentList.size
         }
 
-        fun setData(user: List<CommunityModel>) {
+        fun setData(user: List<CommunityPostEntity>) {
             notifyDataSetChanged()
             super.submitList(user)
         }
 
         companion object {
-            val diffUtil = object : DiffUtil.ItemCallback<CommunityModel>() {
+            val diffUtil = object : DiffUtil.ItemCallback<CommunityPostEntity>() {
                 override fun areItemsTheSame(
-                    oldItem: CommunityModel,
-                    newItem: CommunityModel
+                    oldItem: CommunityPostEntity,
+                    newItem: CommunityPostEntity
                 ): Boolean {
                     return oldItem.title == newItem.title
                 }
 
                 override fun areContentsTheSame(
-                    oldItem: CommunityModel,
-                    newItem: CommunityModel
+                    oldItem: CommunityPostEntity,
+                    newItem: CommunityPostEntity
                 ): Boolean {
-                    return oldItem.post == newItem.post
+                    return oldItem.content == newItem.content
 
                 }
             }

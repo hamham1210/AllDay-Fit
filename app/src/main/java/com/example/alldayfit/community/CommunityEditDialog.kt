@@ -1,20 +1,13 @@
 package com.example.alldayfit.community
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.Observer
-import com.example.alldayfit.R
-import com.example.alldayfit.community.adapter.CommunityMyPostAdapter
-import com.example.alldayfit.community.model.CommunityModel
+import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.databinding.CommunityEditDialogBinding
 
 class CommunityEditDialog(private var viewModel: CommunityViewModel) : DialogFragment() {
@@ -22,7 +15,6 @@ class CommunityEditDialog(private var viewModel: CommunityViewModel) : DialogFra
     private var _binding: CommunityEditDialogBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var comment: CommunityModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +23,7 @@ class CommunityEditDialog(private var viewModel: CommunityViewModel) : DialogFra
         _binding = CommunityEditDialogBinding.inflate(inflater, container, false)
         val view = binding.root
         viewModel.selectedCommunityModel.observe(viewLifecycleOwner, Observer { comment ->
-            binding.etInfo.setText(comment.post)
+            binding.etInfo.setText(comment.content)
             binding.etTitle.setText(comment.title)
 //            binding.tvDate.text = "작성일 :${comment.date}"
         })
@@ -42,11 +34,12 @@ class CommunityEditDialog(private var viewModel: CommunityViewModel) : DialogFra
             ) {
                 Toast.makeText(requireContext(), "내용을 입력해주세요.", Toast.LENGTH_SHORT).show()
             } else {
-                val editComment = CommunityModel(
-//                    "Temporary UI",
+                val editComment = CommunityPostEntity(
+                    "NTqKsmydkVOE9fWxxTolGDSkL7p2",
                     binding.etTitle.text.toString(),
-                    binding.etInfo.text.toString(),
-                    viewModel.currentDate()
+                    viewModel.currentDate(),
+                    "Temporary nickname",
+                    binding.etInfo.text.toString()
                 )
                 viewModel.changeComment(editComment)
                     val newPostion = viewModel.getSelectedPosition()

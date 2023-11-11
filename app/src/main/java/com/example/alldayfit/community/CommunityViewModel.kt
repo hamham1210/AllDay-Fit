@@ -2,22 +2,16 @@ package com.example.alldayfit.community
 
 
 import android.content.Context
-import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.example.alldayfit.community.adapter.CommunityMyPostAdapter
-import com.example.alldayfit.community.model.CommunityModel
+import androidx.lifecycle.map
+import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.databinding.CommunityCancleDialogBinding
-import com.example.alldayfit.databinding.CommunityNewpostDialogBinding
 import com.example.alldayfit.databinding.CommunityPostDialogBinding
+import com.example.alldayfit.db.RealTimeRepositoryImpl
+import com.example.alldayfit.db.model.FirebaseModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -26,19 +20,29 @@ import java.util.Locale
 
 class CommunityViewModel : ViewModel() {
 
-    var communityEditlist = mutableListOf<CommunityModel>()
+    var communityEditlist = mutableListOf<CommunityPostEntity>()
+
     //추가와 데이터 제거를 위한 리스트
-    var communityLivedata = MutableLiveData<List<CommunityModel>>()
+    var communityLivedata = MutableLiveData<List<CommunityPostEntity>>()
+
     //home 라이브 데이터
-    var communitymydata = MutableLiveData<List<CommunityModel>>()
+    var communitymydata = MutableLiveData<List<CommunityPostEntity>>()
+
     //mypost 라이브 데이터
-    var selectedCommunityModel = MutableLiveData<CommunityModel>()
+    var selectedCommunityModel = MutableLiveData<CommunityPostEntity>()
+
     //확인 데이터를 보기 위한 라이브데이터
- var changeCommet = MutableLiveData<CommunityModel>()
-    fun addcomment(communityModel: CommunityModel) {
-        communityEditlist.add(communityModel)
+    var changeCommet = MutableLiveData<CommunityPostEntity>()
+
+    var repo = RealTimeRepositoryImpl()
+    private var onDataChangedCallback: ((List<CommunityPostEntity>) -> Unit)? = null
+
+
+
+    fun addcomment(entity: CommunityPostEntity) {
+        communityEditlist.add(entity)
         communityLivedata.value = communityEditlist
-        communitymydata.value = communityEditlist
+        repo.addPost(entity)
     }
     //코멘트를 작성하였을 때
 
@@ -46,22 +50,24 @@ class CommunityViewModel : ViewModel() {
         val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
         return currentDate
     }
-//현재 날짜 주입
-    fun deletecomment(communityModel: CommunityModel) {
-        communityEditlist.remove(communityModel)
+
+    //현재 날짜 주입
+    fun deletecomment(entity: CommunityPostEntity) {
+        communityEditlist.remove(entity)
         communityLivedata.value = communityEditlist
         communitymydata.value = communityEditlist
+        repo.removePost(entity)
     }
 
     //코멘트를 지웠을 때
-    fun cancelDialog(context: Context, communityModel: CommunityModel) {
+    fun cancelDialog(context: Context, entity: CommunityPostEntity) {
         val binding = CommunityCancleDialogBinding.inflate(LayoutInflater.from(context))
         val dialog = MaterialAlertDialogBuilder(context)
             .setView(binding.root)
             .create()
 
         binding.btnDelete.setOnClickListener {
-            deletecomment(communityModel)
+            deletecomment(entity)
             dialog.dismiss()
         }
         binding.btnCancel.setOnClickListener {
@@ -69,12 +75,15 @@ class CommunityViewModel : ViewModel() {
         }
         dialog.show()
     }
-    fun onContentClicked(communityModel: CommunityModel) {
-        selectedCommunityModel.value =communityModel
+
+    fun onContentClicked(entity: CommunityPostEntity) {
+        selectedCommunityModel.value = entity
     }
-    fun changeComment(communityModel: CommunityModel){
-        changeCommet.value =communityModel
+
+    fun changeComment(entity: CommunityPostEntity) {
+        changeCommet.value = entity
     }
+
     fun updateItemInCommunityList(position: Int) {
         val updatedCommunityModel = changeCommet.value // 현재 선택된 CommunityModel을 가져옵니다.
         updatedCommunityModel?.let { model ->

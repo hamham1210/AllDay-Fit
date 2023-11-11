@@ -42,10 +42,11 @@ data class FirebaseModel(
     }
 
     data class Post(
-        val author: String,
-        val content: String,
-        val image: String,
+        val postId: String,
+        val title: String,
         val postingDate: String,
+        val nickname: String,
+        val content: String,
     )
 
 }

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:maxHeight="190dp"
+    android:maxHeight="3000dp"
     android:padding="10dp"
     android:id="@+id/community_content">
 
@@ -12,22 +12,23 @@
         android:id="@+id/ic_user"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="5dp"
         android:clipToOutline="true"
+        android:layout_marginStart="10dp"
         android:maxWidth="30dp"
         android:maxHeight="30dp"
         android:src="@drawable/ic_user"
         app:layout_constraintDimensionRatio="1.2"
         app:layout_constraintEnd_toStartOf="@id/tv_nickname"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:text="쫄튀"
+        android:text="닉네임"
         android:textSize="@dimen/text_size_very_small"
         app:layout_constraintBottom_toBottomOf="@id/ic_user"
         app:layout_constraintStart_toEndOf="@id/ic_user"
@@ -50,10 +51,13 @@
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxLines="1"
         android:text="글제목"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:textSize="@dimen/text_size_medium"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/ic_user" />
 
     <TextView
         android:id="@+id/tv_info"
@@ -61,20 +65,19 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="2"
-        android:padding="5dp"
+        android:layout_marginStart="10dp"
         android:text="글의 내용을 적어두기"
         android:textSize="@dimen/text_size_small"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_nickname" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
     <android.widget.Button
         android:id="@+id/btn_amen"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="250dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/button_radius"
         android:backgroundTint="@color/dark_blue"
         android:text="@string/community_btn_amend"
@@ -92,15 +95,15 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
-        android:layout_marginBottom="5dp"
+
         android:background="@drawable/button_radius2"
         android:backgroundTint="@color/gray"
         android:text="@string/community_btn_delete"
         android:textSize="@dimen/text_size_very_small"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/btn_amen"
         app:layout_constraintDimensionRatio="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_amen"
-        app:layout_constraintTop_toBottomOf="@id/tv_info" />
+       app:layout_constraintTop_toTopOf="@id/btn_amen" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

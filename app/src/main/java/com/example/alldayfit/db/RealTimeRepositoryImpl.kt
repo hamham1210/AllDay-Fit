@@ -1,11 +1,14 @@
 package com.example.alldayfit.db
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
+import com.example.alldayfit.community.CommunityViewModel
 import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.db.model.FirebaseModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
 
 class RealTimeRepositoryImpl() : RealTimeRepository {
 
@@ -132,7 +135,7 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
 
     override fun removePost(content: CommunityPostEntity) {
         val postId = content.postId
-        postRef.child(postId).removeValue()
+        postRef.child("/-Nio9Wm0nb_8IytdXCtg").removeValue()
     }
 
     private var startAtKey: String? = null
@@ -160,7 +163,23 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
         })
         return dataList
     }
+    override fun observeList(lists : MutableLiveData<ArrayList<FirebaseModel.Post>>){
+        postRef.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val list = ArrayList<FirebaseModel.Post>()
+                for (snap in snapshot.children){
+                    val data = snap.getValue<FirebaseModel.Post>()
+                    data?.let {
+                        list.add(it)
+                    }
+                }
+                lists.postValue(list)
+            }
+            override fun onCancelled(error: DatabaseError) {
+            }
 
+        })
+    }
     companion object {
         private var instace: RealTimeRepositoryImpl? = null
         fun getInstance(): RealTimeRepositoryImpl = instace ?: synchronized(this) {
