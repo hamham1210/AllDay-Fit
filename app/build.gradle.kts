@@ -9,7 +9,6 @@ plugins {
 }
 
 android {
-
     namespace = "com.example.alldayfit"
     compileSdk = 34
 
@@ -23,11 +22,10 @@ android {
         applicationId = "nrplh.Iridescent.alldayfit"
         minSdk = 27
         targetSdk = 33
-        versionCode = 9
+        versionCode = 3
         versionName = "0.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -118,4 +116,7 @@ dependencies {
 
     //coil
     implementation ("io.coil-kt:coil:2.5.0")
+
+    //FoodLens
+    implementation ("com.doinglab.foodlens:FoodLens2:1.0.0")
 }
