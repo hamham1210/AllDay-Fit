@@ -25,13 +25,15 @@
         android:id="@+id/add_meal_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="29dp"
+        android:paddingTop="5dp"
         android:src="@drawable/ic_plus_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/meal_txt"
         android:clickable="true"
-        android:focusable="true"/>
+        android:focusable="true"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,6 +23,10 @@ import com.example.alldayfit.dietrecord.adapter.DietRecordAdapter
 import java.io.File
 
 class DietRecordAddDialog : DialogFragment() {
+    private val sharedViewModel: SharedViewModel by lazy {
+        ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+    }
+
     private var _binding: DietRecordAddDialogBinding? = null
     private val binding get() = _binding!!
 
@@ -99,7 +103,6 @@ class DietRecordAddDialog : DialogFragment() {
             } else {
                 openGallery()
             }
-            // 식단 입력 후 plus 버튼 눌렀을 때 음식이 추가되는 클릭 리스너
         }
     }
 
@@ -140,23 +143,25 @@ class DietRecordAddDialog : DialogFragment() {
         return result
     }
 
-    // 이미지 선택 결과 처리
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
             val imageUri: Uri = data.data!!
             val newImageUri = getRealPathFromURI(imageUri)
 
-            // Glide
+            // SharedViewModel에 선택된 이미지 URI 설정
+            sharedViewModel.setSelectedImageUri(Uri.fromFile(File(newImageUri)))
+
+            // Glide를 사용하여 이미지를 로드
             Glide.with(requireContext())
                 .load(File(newImageUri).path)
                 .centerCrop()
                 .into(binding.dietImg)
-
         }
     }
 
-    private fun addMealText() {        // 식단 입력 후 plus 버튼 눌렀을 때 음식이 추가되는 클릭 리스너
+    private fun addMealText() {
         val dietRecord = binding.mealEdit.text.toString()
         //editText가 빈칸일 때 toast 메세지 띄우고 식단 추가 되지 않음
         if (dietRecord.isNotEmpty()) {

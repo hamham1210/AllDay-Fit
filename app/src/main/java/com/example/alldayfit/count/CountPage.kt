@@ -72,6 +72,7 @@ class CountPage : AppCompatActivity() {
                 finishView()
         }
 
+
         //시간을 00:00:00 으로 보이게 하는 코드
         mBinding.timer.setOnChronometerTickListener {
             val elapsedMillis = SystemClock.elapsedRealtime() - it.base
