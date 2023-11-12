@@ -15,9 +15,10 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
     //    private val listener = object : ValueEventListener
     private val userRef = getUserReference(RealTimeRepository.USERS)
     private val mealRef = getUserReference(RealTimeRepository.DIET)
-    private val informationRef = getUserReference(RealTimeRepository.PHYSICAL)
+    private val physicalRef = getUserReference(RealTimeRepository.PHYSICAL)
+    private val userInfoRef = getUserReference(RealTimeRepository.INFORMATION)
     private val exerciseRef = getUserReference(RealTimeRepository.EXERCISE)
-    val postRef = getReference(RealTimeRepository.POST)
+    private val postRef = getReference(RealTimeRepository.POST)
 
     /* 현 유저의 고유 user id를 가지고 user 테이블에 접근하여 데이터 가져오기 */
     override fun getUserData() {
