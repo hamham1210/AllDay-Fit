@@ -116,7 +116,4 @@ dependencies {
 
     //coil
     implementation ("io.coil-kt:coil:2.5.0")
-
-    //FoodLens
-    implementation ("com.doinglab.foodlens:FoodLens2:1.0.0")
 }
