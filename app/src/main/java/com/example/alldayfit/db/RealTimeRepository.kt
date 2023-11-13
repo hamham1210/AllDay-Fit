@@ -42,7 +42,6 @@ interface RealTimeRepository {
     fun updatePost(content: CommunityPostEntity)
     fun removePost(content: CommunityPostEntity)
     fun getPosts(id: String = userId): MutableList<FirebaseModel.Post>
-    fun observeList(list : MutableLiveData<ArrayList<FirebaseModel.Post>>)
     fun changeModel(content: CommunityPostEntity): FirebaseModel.Post {
         return FirebaseModel.Post(userId,  content.title, content.postingDate,content.nickname,content.content)
     }

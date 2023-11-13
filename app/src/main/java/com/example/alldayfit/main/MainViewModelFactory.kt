@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.alldayfit.db.RealTimeRepositoryImpl
 
+
 class MainViewModelFactory: ViewModelProvider.Factory {
     private val realTimeDB = RealTimeRepositoryImpl.getInstance()
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

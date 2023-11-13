@@ -10,7 +10,7 @@ import androidx.lifecycle.map
 import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.databinding.CommunityCancleDialogBinding
 import com.example.alldayfit.databinding.CommunityPostDialogBinding
-import com.example.alldayfit.db.RealTimeRepositoryImpl
+//import com.example.alldayfit.db.RealTimeRepositoryImpl
 import com.example.alldayfit.db.model.FirebaseModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.text.SimpleDateFormat
@@ -34,7 +34,7 @@ class CommunityViewModel : ViewModel() {
     //확인 데이터를 보기 위한 라이브데이터
     var changeCommet = MutableLiveData<CommunityPostEntity>()
 
-    var repo = RealTimeRepositoryImpl()
+//    var repo = RealTimeRepositoryImpl()
     private var onDataChangedCallback: ((List<CommunityPostEntity>) -> Unit)? = null
 
 
@@ -42,7 +42,7 @@ class CommunityViewModel : ViewModel() {
     fun addcomment(entity: CommunityPostEntity) {
         communityEditlist.add(entity)
         communityLivedata.value = communityEditlist
-        repo.addPost(entity)
+//        repo.addPost(entity)
     }
     //코멘트를 작성하였을 때
 
@@ -56,7 +56,7 @@ class CommunityViewModel : ViewModel() {
         communityEditlist.remove(entity)
         communityLivedata.value = communityEditlist
         communitymydata.value = communityEditlist
-        repo.removePost(entity)
+//        repo.removePost(entity)
     }
 
     //코멘트를 지웠을 때

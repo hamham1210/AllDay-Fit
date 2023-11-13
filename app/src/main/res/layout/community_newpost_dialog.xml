@@ -85,7 +85,7 @@
 
     <android.widget.Button
         android:id="@+id/btn_write"
-        style="@style/buttonText"
+
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_radius"
@@ -99,7 +99,7 @@
 
     <android.widget.Button
         android:id="@+id/btn_cancel"
-        style="@style/buttonText"
+
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
