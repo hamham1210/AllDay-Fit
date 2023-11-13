@@ -1,23 +1,24 @@
 package com.example.alldayfit.db
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
-import com.example.alldayfit.community.CommunityViewModel
 import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.db.model.FirebaseModel
+import com.example.alldayfit.main.model.DailyExercise
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.getValue
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class RealTimeRepositoryImpl() : RealTimeRepository {
 
     //    private val listener = object : ValueEventListener
     private val userRef = getUserReference(RealTimeRepository.USERS)
     private val mealRef = getUserReference(RealTimeRepository.DIET)
-    private val informationRef = getUserReference(RealTimeRepository.PHYSICAL)
+    private val physicalRef = getUserReference(RealTimeRepository.PHYSICAL)
+    private val userInfoRef = getUserReference(RealTimeRepository.INFORMATION)
     private val exerciseRef = getUserReference(RealTimeRepository.EXERCISE)
-    val postRef = getReference(RealTimeRepository.POST)
+    private val postRef = getReference(RealTimeRepository.POST)
 
     /* 현 유저의 고유 user id를 가지고 user 테이블에 접근하여 데이터 가져오기 */
     override fun getUserData() {
@@ -57,6 +58,32 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
                 // 에러
             }
         })
+    }
+
+    override fun fetchWeekData(): MutableList<DailyExercise> {
+        val query = exerciseRef.orderByChild(RealTimeRepository.DATE).limitToLast(7)
+        val dataList = mutableListOf<DailyExercise>()
+        query.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (dataSnapshot in snapshot.children) {
+                    val dbData = dataSnapshot.getValue(FirebaseModel.ExerciseRecord::class.java)
+                    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                    dbData?.let {
+                        dataList.add(
+                            DailyExercise(
+                                it.totalTime,
+                                LocalDate.parse(it.logDate, formatter)
+                            )
+                        )
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                println("Error fetching data: $error")
+            }
+        })
+        return dataList
     }
 
     //
@@ -135,7 +162,7 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
 
     override fun removePost(content: CommunityPostEntity) {
         val postId = content.postId
-        postRef.child("/-Nio9Wm0nb_8IytdXCtg").removeValue()
+        postRef.child(postId).removeValue()
     }
 
     private var startAtKey: String? = null
@@ -163,23 +190,7 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
         })
         return dataList
     }
-    override fun observeList(lists : MutableLiveData<ArrayList<FirebaseModel.Post>>){
-        postRef.addValueEventListener(object :ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val list = ArrayList<FirebaseModel.Post>()
-                for (snap in snapshot.children){
-                    val data = snap.getValue<FirebaseModel.Post>()
-                    data?.let {
-                        list.add(it)
-                    }
-                }
-                lists.postValue(list)
-            }
-            override fun onCancelled(error: DatabaseError) {
-            }
 
-        })
-    }
     companion object {
         private var instace: RealTimeRepositoryImpl? = null
         fun getInstance(): RealTimeRepositoryImpl = instace ?: synchronized(this) {
