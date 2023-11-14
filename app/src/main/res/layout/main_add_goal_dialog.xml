@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/none"
+    android:padding="15dp"
+    tools:context=".main.ExerciseStatusAddGoalDialog">
+
+    <ImageButton
+        android:id="@+id/close_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/none"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/close_dialog" />
+
+
+    <TextView
+        android:id="@+id/dialog_title"
+        style="@style/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/week_goal"
+        app:layout_constraintBottom_toBottomOf="@id/close_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/close_btn" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/goal_listview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        app:layout_constraintBottom_toTopOf="@id/goal_edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_title" />
+
+
+    <EditText
+        android:inputType="text"
+        android:id="@+id/goal_edit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/gray_stroke_white_back_shape"
+        android:gravity="center_vertical"
+        android:hint="@string/exercise_goal_add_edit_hint"
+        android:minHeight="50dp"
+        android:paddingHorizontal="10dp"
+        android:textSize="@dimen/text_size_very_small"
+        app:layout_constraintBottom_toTopOf="@id/finish_btn"
+        app:layout_constraintDimensionRatio="7:1"
+        app:layout_constraintEnd_toEndOf="@id/close_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/goal_listview"
+        android:importantForAutofill="no" />
+
+    <ImageButton
+        android:contentDescription="@string/add_week_goal_btn_desc"
+        android:id="@+id/add_goal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/none"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_add"
+        android:translationZ="1dp"
+        app:layout_constraintBottom_toBottomOf="@id/goal_edit"
+        app:layout_constraintEnd_toEndOf="@id/goal_edit"
+        app:layout_constraintTop_toTopOf="@id/goal_edit"
+        app:tint="@color/black" />
+
+    <android.widget.Button
+        android:id="@+id/finish_btn"
+        style="@style/buttonText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/black_stroke_white_back_shape"
+        android:text="@string/edit_finish"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="5:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/goal_edit" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

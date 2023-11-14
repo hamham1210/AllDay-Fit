@@ -28,10 +28,13 @@ render.experimental.xml
 *.keystore
 
 # Google Services (e.g. APIs or Firebase)
-google-services.json
+# google-services.json
 
 # Android Profiling
 *.hprof
+
+# debug realease file
+app/release
 
 ### Mac OS ###
 # General

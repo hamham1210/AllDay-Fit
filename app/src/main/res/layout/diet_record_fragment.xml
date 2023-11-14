@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".dietrecord.DietRecordFragment">
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/date_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/prev_date_btn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/none"
+        android:contentDescription="@string/subtract_day_btn_desc"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_prev"
+        app:layout_constraintBottom_toBottomOf="@id/date_txt"
+        app:layout_constraintEnd_toStartOf="@id/date_txt"
+        app:layout_constraintTop_toTopOf="@id/date_txt" />
+
+    <ImageButton
+        android:id="@+id/next_date_btn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="10dp"
+        android:background="@color/none"
+        android:contentDescription="@string/add_day_btn_desc"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_next"
+        app:layout_constraintBottom_toBottomOf="@id/date_txt"
+        app:layout_constraintStart_toEndOf="@id/date_txt"
+        app:layout_constraintTop_toTopOf="@id/date_txt" />
+
+    <TextView
+        android:id="@+id/diet_record_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/diet_record"
+        android:textSize="@dimen/text_size_large"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/date_txt" />
+
+    <LinearLayout
+        android:id="@+id/meal_wrap"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/daily_nutritional_analysis_txt"
+        app:layout_constraintDimensionRatio="1.2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/diet_record_txt">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <include
+                android:id="@+id/breakfast_view"
+                layout="@layout/diet_record_meal_item" />
+
+            <View
+                android:layout_width="25dp"
+                android:layout_height="0dp" />
+
+            <include
+                android:id="@+id/lunch_view"
+                layout="@layout/diet_record_meal_item" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <include
+                android:id="@+id/dinner_view"
+                layout="@layout/diet_record_meal_item" />
+
+            <View
+                android:layout_width="25dp"
+                android:layout_height="0dp" />
+
+            <include
+                android:id="@+id/snack_view"
+                layout="@layout/diet_record_meal_item" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/daily_nutritional_analysis_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/daily_nutritional_analysis"
+        android:textSize="@dimen/text_size_medium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/meal_wrap" />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/diet_record_chart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/light_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/daily_nutritional_analysis_txt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
