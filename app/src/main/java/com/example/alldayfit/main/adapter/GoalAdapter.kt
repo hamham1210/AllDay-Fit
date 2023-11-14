@@ -11,8 +11,6 @@ import com.example.alldayfit.main.model.Goal
 
 class GoalAdapter() :
     ListAdapter<Goal, RecyclerView.ViewHolder>(diffUtil) {
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return when (viewType) {
@@ -33,12 +31,13 @@ class GoalAdapter() :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val currentItem = getItem(position)
-        when(currentItem.type){
+        when (currentItem.type) {
             Goal.POST_POSITION -> (holder as PostHolder).bind(currentItem)
             Goal.DIALOG_POSITION -> (holder as DailyHolder).bind(currentItem)
         }
 
     }
+
     inner class DailyHolder(val binding: MainGoalItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Goal) {

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/communityMainFragment"
         android:enabled="true"
@@ -17,7 +16,9 @@
         android:id="@+id/mainFragment"
         android:enabled="true"
         android:icon="@drawable/ic_main"
-        android:title="@string/main_page" />
+        android:title="@string/main_page">
+
+    </item>
 
     <item
         android:id="@+id/exerciseStatusFragment"

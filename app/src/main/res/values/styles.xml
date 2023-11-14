@@ -58,8 +58,9 @@
     </style>
 
     <style name="CircularProgressBar">
+        <item name="android:radius">10dp</item>
         <item name="android:indeterminateOnly">false</item>
-        <item name="android:progressDrawable">@drawable/progress_circular</item>
+        <item name="android:progressDrawable">@drawable/progress_gradation</item>
     </style>
 
 </resources>

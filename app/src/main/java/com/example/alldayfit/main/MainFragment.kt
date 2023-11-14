@@ -12,11 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.example.alldayfit.R
-import com.example.alldayfit.count.CountPage
+import com.example.alldayfit.count.CountActivity
 import com.example.alldayfit.databinding.MainFragmentBinding
 import com.example.alldayfit.databinding.MainWeeklyRecordItemBinding
-
-import com.example.alldayfit.dietrecord.DietRecordFragmentDirections
 import com.example.alldayfit.main.adapter.GoalAdapter
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -89,10 +87,12 @@ class MainFragment : Fragment() {
         weekGoalList.adapter = goalAdapter
     }
 
-    private fun initViewModel() {
-        with(viewModel) {
-            exerciseBtnTxt.observe(viewLifecycleOwner) { it ->
-                binding.exerciseBtn.text = getString(it)
+    private fun initViewModel() = with(viewModel) {
+        exerciseBtnTxt.observe(viewLifecycleOwner) { it ->
+            if (it) {
+                binding.exerciseBtn.text = getString(R.string.exercise_finish)
+            } else {
+                binding.exerciseBtn.text = getString(R.string.exercise_start)
             }
         }
     }
@@ -118,8 +118,12 @@ class MainFragment : Fragment() {
     private fun setupView() = with(binding) {
         exerciseBtn.setOnClickListener {
             viewModel.toggleExerciseBtn()
-            val intent = Intent(context, CountPage::class.java)
-            startActivity(intent)
+            if (exerciseBtn.text == getString(R.string.exercise_finish)) {
+                val intent = Intent(context, CountActivity::class.java)
+                startActivity(intent)
+            } else {
+                viewModel.updateExerciseData()
+            }
         }
         weekGoalFixBtn.setOnClickListener {
             showDialog(MainFragmentDirections.actionMainFragmentToExerciseStatusAddGoalDialog())

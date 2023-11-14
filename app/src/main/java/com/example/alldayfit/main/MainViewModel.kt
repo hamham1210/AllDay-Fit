@@ -1,9 +1,9 @@
 package com.example.alldayfit.main
 
+import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.LiveData
-import com.example.alldayfit.R
 import com.example.alldayfit.db.RealTimeRepository
 import com.example.alldayfit.db.model.FirebaseModel
 import com.example.alldayfit.main.model.Goal
@@ -16,8 +16,8 @@ class MainViewModel(private val database: RealTimeRepository) : ViewModel() {
     private val _goalList: MutableLiveData<List<Goal>> = MutableLiveData()
     val goalList: MutableLiveData<List<Goal>> get() = _goalList
 
-    private val _exerciseBtnTxt: MutableLiveData<Int> = MutableLiveData()
-    val exerciseBtnTxt: LiveData<Int> get() = _exerciseBtnTxt
+    private val _exerciseBtnTxt: MutableLiveData<Boolean> = MutableLiveData()
+    val exerciseBtnTxt: LiveData<Boolean> get() = _exerciseBtnTxt
 
     private lateinit var exerciseData: FirebaseModel.ExerciseRecord
     private lateinit var startTime: ZonedDateTime
@@ -25,27 +25,34 @@ class MainViewModel(private val database: RealTimeRepository) : ViewModel() {
 
     // ViewModel 초기 값 설정
     init {
-        _exerciseBtnTxt.value = R.string.exercise_start
+        _exerciseBtnTxt.value = false
         _goalList.value = _goal
     }
 
     fun toggleExerciseBtn() {
         val currentTxt = exerciseBtnTxt.value
-        if (currentTxt == R.string.exercise_start) {
-            _exerciseBtnTxt.value = R.string.exercise_finish
+        if (currentTxt == true) {
+            _exerciseBtnTxt.value = false
             startTime = getCurrentLocalTime()
-        } else {
-            _exerciseBtnTxt.value = R.string.exercise_start
+        }
+        if (currentTxt == false) {
+            _exerciseBtnTxt.value = true
             endTime = getCurrentLocalTime()
-            val elapsedTime =
-                elapsedTimeInMinutes(startTime, endTime)
         }
     }
 
-    private fun updateExerciseData(elapsedTime: Int) {
-        exerciseData = FirebaseModel.ExerciseRecord(
-            totalTime = elapsedTime, logDate = getCurrentLocalTime().toLogFormat()
-        )
+    fun updateExerciseData() {
+        val elapsedTime = elapsedTimeInMinutes(startTime, endTime)
+        Log.d("test", elapsedTime.toString())
+        if (elapsedTime != null) {
+            if (elapsedTime < 30) {
+                return
+            }
+            exerciseData = FirebaseModel.ExerciseRecord(
+                totalTime = elapsedTime ?: 30, logDate = getCurrentLocalTime().toLogFormat()
+            )
+            database.addExercise(exerciseData)
+        }
     }
 
     /* zonDatetime 형식으로 다시 반환 */
@@ -72,9 +79,6 @@ class MainViewModel(private val database: RealTimeRepository) : ViewModel() {
     }
 
     private fun getWeekExercise() {
-    }
-
-    fun updateExerciseTime(exerciseData: FirebaseModel.ExerciseRecord) {
 
     }
 
