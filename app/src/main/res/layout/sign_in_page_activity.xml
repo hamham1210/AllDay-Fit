@@ -141,5 +141,5 @@
         app:layout_constraintHorizontal_bias="0.203"
         app:layout_constraintStart_toEndOf="@id/ic_google"
         app:layout_constraintTop_toTopOf="@id/googleSignInButton"
-        app:layout_constraintVertical_bias="0.478" />
+        app:layout_constraintVertical_bias="0.477" />
 </androidx.constraintlayout.widget.ConstraintLayout>
