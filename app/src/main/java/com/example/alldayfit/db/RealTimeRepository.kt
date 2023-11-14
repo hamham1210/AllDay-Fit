@@ -1,5 +1,6 @@
 package com.example.alldayfit.db
 
+import androidx.lifecycle.MutableLiveData
 import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.db.model.FirebaseModel
 import com.example.alldayfit.main.model.DailyExercise
@@ -42,7 +43,7 @@ interface RealTimeRepository {
     fun removePost(content: CommunityPostEntity)
     fun getPosts(id: String = userId): MutableList<FirebaseModel.Post>
     fun changeModel(content: CommunityPostEntity): FirebaseModel.Post {
-        return FirebaseModel.Post(userId, content.content, content.image, content.postingDate)
+        return FirebaseModel.Post(userId,  content.title, content.postingDate,content.nickname,content.content)
     }
 
     companion object {

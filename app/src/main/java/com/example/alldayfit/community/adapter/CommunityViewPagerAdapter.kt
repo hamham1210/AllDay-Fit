@@ -20,7 +20,13 @@ class CommunityViewPagerAdapter(fragmentActivity: FragmentActivity) :
 
     fun getTitle(position: Int): Int = fragments[position].title
 
-    override fun getItemCount(): Int = fragments.size
+    override fun getItemCount(): Int = 2
 
-    override fun createFragment(position: Int): Fragment = fragments[position].fragment
+    override fun createFragment(position: Int): Fragment {
+        when (position) {
+            0 -> return CommunityHomeFragment()
+            1 -> return CommunityMyPostFragment()
+        }
+        return CommunityHomeFragment()
+    }
 }

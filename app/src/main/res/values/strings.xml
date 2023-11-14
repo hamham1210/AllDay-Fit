@@ -144,4 +144,5 @@
     <!-- Sync Preferences -->
     <string name="edit_finish">수정</string>
     <string name="user">유저</string>
+    <string name="community_edit">수정</string>
 </resources>

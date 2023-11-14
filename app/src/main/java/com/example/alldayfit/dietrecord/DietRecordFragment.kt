@@ -11,8 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.alldayfit.R
 import com.example.alldayfit.databinding.DietRecordFragmentBinding
 import com.example.alldayfit.databinding.DietRecordMealItemBinding
-import com.example.alldayfit.main.MainViewModel
-import com.example.alldayfit.main.MainViewModelFactory
+
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
