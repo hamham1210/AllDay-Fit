@@ -47,7 +47,7 @@ class GoogleSignInPage : AppCompatActivity() {
         binding.emailSignUp.setOnClickListener{
             signUpEmailPage()
         }
-
+        // 기존 사용자 로그인 버튼 클릭 이벤트 처리
         binding.buttonLogin.setOnClickListener {
             signIn(binding.editTextEmail.text.toString(), binding.editTextPassword.text.toString())
         }
