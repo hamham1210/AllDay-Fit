@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.example.alldayfit.MainActivity
 import com.example.alldayfit.R
 import com.example.alldayfit.databinding.SignInPageActivityBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -13,6 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 
 class GoogleSignInPage : AppCompatActivity() {
@@ -40,6 +42,50 @@ class GoogleSignInPage : AppCompatActivity() {
         binding.googleSignInButton.setOnClickListener {
             signInWithGoogle() // Google 로그인 함수 호출
         }
+
+        // Email 회원가입 버튼 클릭 이벤트 처리
+        binding.emailSignUp.setOnClickListener{
+            signUpEmailPage()
+        }
+        // 기존 사용자 로그인 버튼 클릭 이벤트 처리
+        binding.buttonLogin.setOnClickListener {
+            signIn(binding.editTextEmail.text.toString(), binding.editTextPassword.text.toString())
+        }
+    }
+
+    private fun signIn(email: String, password: String) {
+
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            firebaseAuth?.signInWithEmailAndPassword(email, password)
+                ?.addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(
+                            baseContext, "로그인에 성공 하였습니다.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        moveMainPage(firebaseAuth?.currentUser)
+                    } else {
+                        Toast.makeText(
+                            baseContext, "로그인에 실패 하였습니다.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+        }
+    }
+    // 유저정보 넘겨주고 메인 액티비티 호출
+    fun moveMainPage(user: FirebaseUser?){
+        if( user!= null){
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+    }
+
+
+    // Email 회원가입 페이지
+    private fun signUpEmailPage(){
+        startActivity(Intent(this,EmailSignUpActivity::class.java))
+
     }
 
     // Google 로그인 시작
