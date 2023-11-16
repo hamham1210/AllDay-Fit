@@ -15,10 +15,10 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_activity)
-        val lodingImage = findViewById<LottieAnimationView>(R.id.splash_image)
+        val loadingImage = findViewById<LottieAnimationView>(R.id.splash_image)
 
         // 애니메이션 시작
-        lodingImage.playAnimation()
+        loadingImage.playAnimation()
 
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
