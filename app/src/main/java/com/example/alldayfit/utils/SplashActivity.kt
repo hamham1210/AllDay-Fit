@@ -1,29 +1,30 @@
 package com.example.alldayfit.utils
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.splashscreen.SplashScreen
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.example.alldayfit.databinding.SplashActivityBinding
+import com.airbnb.lottie.LottieAnimationView
+import com.example.alldayfit.R
 import com.example.alldayfit.settings.login.GoogleSignInPage
 
+@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
-    private lateinit var splashScreen: SplashScreen
-    private lateinit var binding : SplashActivityBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = SplashActivityBinding.inflate(layoutInflater)
-        splashScreen = installSplashScreen()
-        setContentView(binding.root)
-        binding.splashImage.playAnimation()
+        setContentView(R.layout.splash_activity)
+        val loadingImage = findViewById<LottieAnimationView>(R.id.splash_image)
 
-        val handler = Handler()
+        // 애니메이션 시작
+        loadingImage.playAnimation()
+
+        val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
             val intent = Intent(this, GoogleSignInPage::class.java)
             startActivity(intent)
             finish()
-        }, 1000)
+        }, 3000)
     }
 }
