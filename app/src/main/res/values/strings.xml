@@ -135,9 +135,9 @@
     <string name="rest">휴식</string>
 
     <!-- login activity -->
-    <string name="email_Sign_Up">Email Sign Up</string>
-    <string name="email_Sign_In">Email Sign In</string>
-    <string name="googleSignIn">Sign In with Google</string>
+    <string name="email_sign_up">Email Sign Up</string>
+    <string name="email_sign_in">Email Sign In</string>
+    <string name="google_Sign_In">Sign In with Google</string>
     <string name="google">Sign up with GooGle </string>
     <string name="sign">Sign Up</string>
 
