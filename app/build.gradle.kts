@@ -138,5 +138,8 @@ dependencies {
     implementation("io.coil-kt:coil:2.5.0")
 
     //lottie
-    implementation("com.airbnb.android:lottie:6.1.0")
+    implementation ("com.airbnb.android:lottie:6.1.0")
+
+    // splash
+    implementation ("androidx.core:core-splashscreen:1.1.0-alpha02")
 }
