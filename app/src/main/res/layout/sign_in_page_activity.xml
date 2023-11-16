@@ -9,10 +9,12 @@
 
     <EditText
         android:id="@+id/editTextEmail"
-        android:layout_width="377dp"
-        android:layout_height="48dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintDimensionRatio="7"
         android:layout_marginStart="17dp"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="84dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/btn_google"
         android:hint="@string/add_email"
@@ -20,14 +22,18 @@
         android:inputType="textEmailAddress"
         android:paddingHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <EditText
+
         android:id="@+id/editTextPassword"
-        android:layout_width="377dp"
-        android:layout_height="48dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="7"
         android:layout_marginLeft="16dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="36dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/btn_google"
@@ -42,16 +48,21 @@
 
 
     <android.widget.Button
+        app:layout_constraintDimensionRatio="7"
         android:id="@+id/buttonLogin"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="84dp"
         android:layout_marginRight="16dp"
+        android:background="@drawable/sky_blue_solid_shape"
         android:paddingHorizontal="30dp"
+        android:layout_marginHorizontal="30dp"
         android:text="@string/log_in"
-        app:layout_constraintBottom_toTopOf="@+id/email_sign_up"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextPassword" />
 
@@ -67,18 +78,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="206dp"
-        android:layout_height="24dp"
-        android:elevation="21dp"
-        android:text="@string/emailSign"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/email_sign_up"
-        app:layout_constraintEnd_toEndOf="@+id/email_sign_up"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/email_sign_up" />
 
 
     <ImageView
@@ -96,15 +95,36 @@
 
     <ImageView
         android:id="@+id/email_sign_up"
-        android:layout_width="354dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="452dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginBottom="30dp"
+        android:contentDescription="@string/sign_up_email"
         android:elevation="20dp"
+        app:layout_constraintDimensionRatio="7"
         android:src="@drawable/btn_google"
-        app:layout_constraintEnd_toEndOf="@+id/googleSignInButton"
-        app:layout_constraintStart_toStartOf="@+id/googleSignInButton"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
-        android:contentDescription="@string/sign_up_email" />
+        app:layout_constraintBottom_toTopOf="@+id/googleSignInButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="21dp"
+        android:text="@string/email_Sign_Up"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/email_sign_up"
+        app:layout_constraintEnd_toEndOf="@+id/email_sign_up"
+        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/email_sign_up" />
 
     <ImageView
         android:id="@+id/googleSignInButton"
@@ -118,7 +138,6 @@
         app:layout_constraintDimensionRatio="7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_sign_up"
         android:contentDescription="@string/login_google" />
 
     <ImageView
@@ -142,6 +161,7 @@
         android:text="@string/google"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@id/googleSignInButton"
         app:layout_constraintEnd_toEndOf="@+id/googleSignInButton"
         app:layout_constraintHorizontal_bias="0.203"
