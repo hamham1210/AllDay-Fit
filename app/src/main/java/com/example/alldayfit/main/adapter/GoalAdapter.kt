@@ -11,6 +11,7 @@ import com.example.alldayfit.main.model.Goal
 
 class GoalAdapter() :
     ListAdapter<Goal, RecyclerView.ViewHolder>(diffUtil) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return when (viewType) {
@@ -62,7 +63,11 @@ class GoalAdapter() :
 
     // 아이템 타입 리턴
     override fun getItemViewType(position: Int): Int {
-        return getItem(position).type
+        return if (getItem(position).type == 0) {
+            Goal.POST_POSITION
+        } else {
+            Goal.DIALOG_POSITION
+        }
     }
 
     fun addGoal(newData: List<Goal>) {
@@ -77,7 +82,7 @@ class GoalAdapter() :
             }
 
             override fun areContentsTheSame(oldItem: Goal, newItem: Goal): Boolean {
-                return oldItem.hashCode() == newItem.hashCode()
+                return oldItem == newItem
             }
         }
     }

@@ -2,6 +2,7 @@ package com.example.alldayfit.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +12,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alldayfit.R
 import com.example.alldayfit.count.CountActivity
 import com.example.alldayfit.databinding.MainFragmentBinding
 import com.example.alldayfit.databinding.MainWeeklyRecordItemBinding
+import com.example.alldayfit.exercisestatus.BodyStatusViewModel
 import com.example.alldayfit.main.adapter.GoalAdapter
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -23,12 +26,7 @@ import java.time.format.DateTimeFormatter
 class MainFragment : Fragment() {
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: MainViewModel by lazy {
-        ViewModelProvider(
-            this,
-            MainViewModelFactory()
-        )[MainViewModel::class.java]
-    }
+    private lateinit var viewModel: MainViewModel
     private val goalAdapter by lazy { GoalAdapter() }
     private val days: List<MainWeeklyRecordItemBinding> by lazy {
         listOf(
@@ -56,6 +54,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = MainFragmentBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         initView()
         initViewModel()
         return binding.root
@@ -84,6 +83,7 @@ class MainFragment : Fragment() {
                 weekTxt.setTextColor(ContextCompat.getColor(requireContext(), textColor))
             }
         }
+        weekGoalList.layoutManager = LinearLayoutManager(context)
         weekGoalList.adapter = goalAdapter
     }
 
@@ -95,6 +95,15 @@ class MainFragment : Fragment() {
                 binding.exerciseBtn.text = getString(R.string.exercise_start)
             }
         }
+        goalList.observe(viewLifecycleOwner) { data ->
+            goalAdapter.submitList(data.toList())
+        }
+    }
+
+    override fun onResume() {
+        Log.d("testmain", viewModel.getData().toString())
+        Log.d("testmain", goalAdapter.itemCount.toString())
+        super.onResume()
     }
 
     /* ZonedDateTime을 원하는 형식으로 변경 */
@@ -122,10 +131,13 @@ class MainFragment : Fragment() {
                 val intent = Intent(context, CountActivity::class.java)
                 startActivity(intent)
             } else {
-                viewModel.updateExerciseData()
+                if (viewModel.updateExerciseData()) {
+                    days[today.dayOfWeek.value % 7].checkImg.setImageResource(R.drawable.ic_circle_check)
+                }
             }
         }
         weekGoalFixBtn.setOnClickListener {
+            viewModel.changePostType()
             showDialog(MainFragmentDirections.actionMainFragmentToExerciseStatusAddGoalDialog())
         }
     }

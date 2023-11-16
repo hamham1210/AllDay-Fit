@@ -4,14 +4,19 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import com.example.alldayfit.db.RealTimeRepository
+import com.example.alldayfit.db.RealTimeRepositoryImpl
 import com.example.alldayfit.db.model.FirebaseModel
 import com.example.alldayfit.main.model.Goal
 import java.time.Duration
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
-class MainViewModel(private val database: RealTimeRepository) : ViewModel() {
+class MainViewModel() : ViewModel() {
+    private val database: RealTimeRepository by lazy {
+        RealTimeRepositoryImpl.getInstance()
+    }
     private val _goal: MutableList<Goal> = mutableListOf()
     private val _goalList: MutableLiveData<List<Goal>> = MutableLiveData()
     val goalList: MutableLiveData<List<Goal>> get() = _goalList
@@ -41,18 +46,20 @@ class MainViewModel(private val database: RealTimeRepository) : ViewModel() {
         }
     }
 
-    fun updateExerciseData() {
+    fun updateExerciseData(): Boolean {
         val elapsedTime = elapsedTimeInMinutes(startTime, endTime)
         Log.d("test", elapsedTime.toString())
         if (elapsedTime != null) {
             if (elapsedTime < 30) {
-                return
+                return false
             }
             exerciseData = FirebaseModel.ExerciseRecord(
                 totalTime = elapsedTime ?: 30, logDate = getCurrentLocalTime().toLogFormat()
             )
             database.addExercise(exerciseData)
+            return true
         }
+        return false
     }
 
     /* zonDatetime 형식으로 다시 반환 */
@@ -83,43 +90,43 @@ class MainViewModel(private val database: RealTimeRepository) : ViewModel() {
     }
 
 
-//    fun setGoalList(goal: Goal) {
-//        _goal.add(goal)
-//        updateGoal()
-//    }
-//
-//    private fun updateGoal(){
-//        _goalList.value = _goal.toList()
-//    }
-//
-//    fun changeDialogType(goal: Goal) {
-//        val updatedList = _goalList.map { goal ->
-//            if (goal.type == Goal.POST_POSITION) {
-//                goal.copy(type = Goal.DIALOG_POSITION)
-//            } else {
-//                goal
-//            }
-//        }
-//        goalLiveData.value = updatedList
-//        updateGoal()
-//    }
-//
-//    fun changePostType(goachangelist: List<Goal>) {
-//        val updatedList = goachangelist.map { goal ->
-//            if (goal.type == Goal.DIALOG_POSITION) {
-//                goal.copy(type = Goal.POST_POSITION)
-//            } else {
-//                goal
-//            }
-//        }
-//        goalLiveData.value = updatedList
-//        updateGoal()
-//    }
-//
-//    fun deletegoal(goal: Goal, position: Int) {
-//        _goalList.(goal)
-//        goalLiveData.value = _goalList.toList()
-//        updateGoal()
-//    }
+    fun setGoalList(goal: Goal) {
+        _goal.add(goal)
+        updateGoal()
+    }
 
+    fun getData(): List<Goal>? {
+        return goalList.value
+    }
+
+    private fun updateGoal() {
+        _goalList.value = _goal
+    }
+
+    fun changeDialogType() {
+        _goal.map { goal ->
+            if (goal.type == Goal.POST_POSITION) {
+                goal.copy(type = Goal.DIALOG_POSITION)
+            } else {
+                goal
+            }
+        }
+        updateGoal()
+    }
+
+    fun changePostType() {
+        _goal.map { goal ->
+            if (goal.type == Goal.DIALOG_POSITION) {
+                goal.copy(type = Goal.POST_POSITION)
+            } else {
+                goal
+            }
+        }
+        updateGoal()
+    }
+
+    fun deleteGoal(goal: Goal, position: Int) {
+        _goal.remove(goal)
+        updateGoal()
+    }
 }

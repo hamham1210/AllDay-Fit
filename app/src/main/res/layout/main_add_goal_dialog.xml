@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@color/none"
     android:padding="10dp"
+    android:maxHeight="700dp"
     tools:context=".main.ExerciseStatusAddGoalDialog">
 
     <ImageButton

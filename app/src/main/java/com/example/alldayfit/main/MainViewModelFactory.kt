@@ -9,7 +9,7 @@ class MainViewModelFactory : ViewModelProvider.Factory {
     private val realTimeDB = RealTimeRepositoryImpl.getInstance()
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-            return MainViewModel(realTimeDB) as T
+            return MainViewModel() as T
         } else {
             throw IllegalArgumentException("Not found view model class")
         }

@@ -68,20 +68,20 @@ class DietRecordFragment : Fragment() {
 
         dietRecordChart.invalidate()
 
-        sharedViewModel.selectedImageUri.observe(viewLifecycleOwner, { uri ->
+        sharedViewModel.selectedImageUri.observe(viewLifecycleOwner) { uri ->
             // 선택된 이미지 URI로 UI 업데이트
             // Glide를 사용하여 이미지를 ImageView에 띄우기
             if (uri != null) {
                 Glide.with(requireContext())
                     .load(uri)
                     .centerCrop()
-//                    .into(binding.breakfastView.addMealView) //Todo 아침,점심,저녁,간식 각각 들어가도록
+                    .into(binding.breakfastView.addMealView) //Todo 아침,점심,저녁,간식 각각 들어가도록
             } else {
                 // 이미지가 없으면 아이콘으로 대체
                 val dietIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_diet)
                 binding.breakfastView.addMealView.setImageDrawable(dietIcon)
             }
-        })
+        }
 
 
         return binding.root

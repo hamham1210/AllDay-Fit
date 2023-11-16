@@ -1,10 +1,10 @@
 package com.example.alldayfit.settings
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.alldayfit.MainActivity
 import com.example.alldayfit.R
 import com.example.alldayfit.databinding.SignInPageActivityBinding
@@ -63,7 +63,7 @@ class GoogleSignInPage : AppCompatActivity() {
                             baseContext, "로그인에 성공 하였습니다.",
                             Toast.LENGTH_SHORT
                         ).show()
-                        moveMainPage(firebaseAuth?.currentUser)
+                        moveMainPage(firebaseAuth.currentUser)
                     } else {
                         Toast.makeText(
                             baseContext, "로그인에 실패 하였습니다.",

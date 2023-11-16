@@ -1,6 +1,7 @@
 package com.example.alldayfit.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,12 +16,7 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
 
     private var _binding: MainAddGoalDialogBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: MainViewModel by lazy {
-        ViewModelProvider(
-            this,
-            MainViewModelFactory()
-        )[MainViewModel::class.java]
-    }
+    private lateinit var viewModel: MainViewModel
     private val adapter: GoalAdapter by lazy { GoalAdapter() }
     private lateinit var goal: Goal
 
@@ -31,6 +27,7 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
     ): View {
         //데이터 바인딩 연결
         _binding = MainAddGoalDialogBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         initView()
         initViewModel()
         return binding.root
@@ -43,9 +40,10 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
     }
 
     private fun initViewModel() = with(viewModel) {
-//        goalLiveData.observe(viewLifecycleOwner) { data ->
+        goalList.observe(viewLifecycleOwner) { data ->
+            adapter.submitList(data.toList())
 //            adapter.addGoal(data)
-//        }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,7 +55,7 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
         // exercise 주간 목표 마치는 버튼
         finishBtn.setOnClickListener {
             goal = Goal(binding.goalEdit.text.toString(), false, Goal.POST_POSITION)
-//            viewModel.changeDialogType(goal)
+            viewModel.changeDialogType()
             dismiss()
         }
         // dialog 닫는 버튼
@@ -69,8 +67,10 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
                 return@setOnClickListener
             }
             goal = Goal(goalEdit.text.toString(), false, Goal.POST_POSITION)
-//            viewModel.setGoalList(goal)
+            viewModel.setGoalList(goal)
             goalEdit.text.clear()
+            Log.d("test", viewModel.getData().toString())
+            Log.d("test", adapter.itemCount.toString())
         }
     }
 
