@@ -124,5 +124,7 @@ dependencies {
     // lottie
     implementation("com.airbnb.android:lottie:6.1.0")
 
+    // facebook
+    implementation("com.facebook.android:facebook-android-sdk:[4,5)")
 
 }
