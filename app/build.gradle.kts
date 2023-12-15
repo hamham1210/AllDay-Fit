@@ -56,8 +56,6 @@ dependencies {
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.activity:activity-ktx:1.8.2")
 
-    // add databinding library
-    implementation("androidx.databinding:databinding-runtime:8.1.2")
     // chart library::MPAndroidChart. https://github.com/PhilJay/MPAndroidChart.
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     // calendar library::Calendar. https://github.com/kizitonwose/Calendar.
