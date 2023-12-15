@@ -1,4 +1,9 @@
 <resources>
+
+    <string name="facebook_app_id">379209917902734</string>
+    <string name="fb_login_protocol_scheme">fb379209917902734</string>
+    <string name="facebook_client_token">4defcc0c48ecbda680c5d56e9fa5d437</string>
+
     <string name="app_name">AllDayFit</string>
 
     <!-- main activity -->
