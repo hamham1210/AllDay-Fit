@@ -8,11 +8,18 @@ import android.widget.Toast
 import com.example.alldayfit.MainActivity
 import com.example.alldayfit.R
 import com.example.alldayfit.databinding.SignInPageActivityBinding
+import com.facebook.AccessToken
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.AuthCredential
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
@@ -21,6 +28,8 @@ class GoogleSignInPage : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var binding: SignInPageActivityBinding
+    private lateinit var callbackManager: CallbackManager
+    private val Tag: String = "Login"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = SignInPageActivityBinding.inflate(layoutInflater)
@@ -38,19 +47,64 @@ class GoogleSignInPage : AppCompatActivity() {
         // FirebaseAuth 인스턴스 초기화
         firebaseAuth = FirebaseAuth.getInstance()
 
-        // Google 로그인 버튼 클릭 이벤트 처리
-        binding.googleSignInButton.setOnClickListener {
-            signInWithGoogle() // Google 로그인 함수 호출
-        }
+//        // Google 로그인 버튼 클릭 이벤트 처리
+//        binding.googleSignInButton.setOnClickListener {
+//            signInWithGoogle() // Google 로그인 함수 호출
+//        }
+//
+//        // Email 회원가입 버튼 클릭 이벤트 처리
+//        binding.emailSignUp.setOnClickListener {
+//            signUpEmailPage()
+//        }
+//        // 기존 사용자 로그인 버튼 클릭 이벤트 처리
+//        binding.buttonLogin.setOnClickListener {
+//            signIn(binding.editTextEmail.text.toString(), binding.editTextPassword.text.toString())
+//        }
+    }
 
-        // Email 회원가입 버튼 클릭 이벤트 처리
-        binding.emailSignUp.setOnClickListener {
-            signUpEmailPage()
-        }
-        // 기존 사용자 로그인 버튼 클릭 이벤트 처리
-        binding.buttonLogin.setOnClickListener {
-            signIn(binding.editTextEmail.text.toString(), binding.editTextPassword.text.toString())
-        }
+    private fun initView() = with(binding) {
+        // facebook social login
+        callbackManager = CallbackManager.Factory.create()
+        facebookLoginBtn.setReadPermissions("email", "public_profile")
+        facebookLoginBtn.registerCallback(
+            callbackManager,
+            object : FacebookCallback<LoginResult> {
+                override fun onSuccess(result: LoginResult?) {
+                    Log.d(Tag, "facebook login success")
+                    if (result != null) {
+                        handleFacebookAccessToken(result.accessToken)
+                    }
+                }
+
+                override fun onCancel() {
+                    Log.d(Tag, "facebook login cancel")
+
+                }
+
+                override fun onError(error: FacebookException?) {
+                    Log.d(Tag, "facebook login error")
+                }
+
+            }
+        )
+    }
+
+    private fun handleFacebookAccessToken(token: AccessToken) {
+        val credential: AuthCredential = FacebookAuthProvider.getCredential(token.token)
+        FirebaseAuth.getInstance().signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = FirebaseAuth.getInstance().currentUser
+                    val isNewUser = task.result?.additionalUserInfo?.isNewUser
+                    if (isNewUser == true) {
+                        // new user
+                    } else {
+                        // existing user.
+                    }
+                } else {
+                    // failed login
+                }
+            }
     }
 
     private fun signIn(email: String, password: String) {
