@@ -1,12 +1,14 @@
 package com.example.alldayfit
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.alldayfit.databinding.MainActivityBinding
+import com.kakao.sdk.common.util.Utility
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: MainActivityBinding
@@ -20,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         binding = MainActivityBinding.inflate(layoutInflater)
         initView()
         setContentView(binding.root)
+        val keyHash = Utility.getKeyHash(this)
+        Log.d("Key555", keyHash)
     }
 
     private fun initView() = with(binding) {

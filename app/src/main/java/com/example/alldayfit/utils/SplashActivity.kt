@@ -5,10 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieAnimationView
 import com.example.alldayfit.R
 import com.example.alldayfit.settings.login.GoogleSignInPage
+import com.kakao.sdk.common.util.Utility
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
