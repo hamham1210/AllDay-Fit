@@ -119,4 +119,8 @@ dependencies {
 
     //lottie
     implementation("com.airbnb.android:lottie:6.1.0")
+
+    //Naver Login
+    implementation("com.navercorp.nid:oauth:5.9.0")
+    implementation(files("src/oauth-5.9.0.aar"))
 }

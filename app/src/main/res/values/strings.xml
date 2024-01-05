@@ -154,4 +154,9 @@
     <string name="user">유저</string>
 
     <string name="community_edit">수정</string>
+
+    <!-- Naver Login -->
+    <string name="naver_client_id">5189YiTsxWdJpFwg1bgV</string>
+    <string name="naver_client_secret">n3CAVNJp2r</string>
+    <string name="naver_client_name">NaverLoginExam</string>
 </resources>
