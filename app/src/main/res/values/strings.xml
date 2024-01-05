@@ -139,7 +139,10 @@
     <string name="emailSiginIn">Email Sign In</string>
     <string name="googleSignIn">Sign In with Google</string>
     <string name="google">Sign up with GooGle </string>
+    <string name="twitterSignIn">Twitter Sign In</string>
     <string name="default_web_client_id">11976146148-omnd8puu3ithu4bspropaf2tehgeffc9.apps.googleusercontent.com</string>
+    <string name="twitter_consumer_key">MHh2ZFl0emZ4MlFYdG01ejR0SUo6MTpjaQ</string>
+    <string name="twitter_consumer_secret">GDdboBJEYX_G5J5665QZ63SpUg3kxTi2KKspiOO6IKEGKi4Us4</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
