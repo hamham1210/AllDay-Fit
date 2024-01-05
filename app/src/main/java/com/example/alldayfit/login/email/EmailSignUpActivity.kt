@@ -1,16 +1,14 @@
-package com.example.alldayfit.settings
+package com.example.alldayfit.login.email
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.alldayfit.MainActivity
-import com.example.alldayfit.R
 import com.example.alldayfit.databinding.EmailSignUpActivityBinding
-import com.example.alldayfit.databinding.SignInPageActivityBinding
+import com.example.alldayfit.login.google.GoogleSignInPage
 import com.google.firebase.auth.FirebaseAuth
 
 

@@ -1,4 +1,4 @@
-package com.example.alldayfit.settings
+package com.example.alldayfit.login.google
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.example.alldayfit.MainActivity
 import com.example.alldayfit.R
 import com.example.alldayfit.databinding.SignInPageActivityBinding
+import com.example.alldayfit.login.email.EmailSignUpActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
