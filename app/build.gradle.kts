@@ -1,4 +1,3 @@
-import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 import java.util.Properties
 
 plugins {
@@ -45,7 +44,7 @@ android {
 
         buildConfigField("String", "REALTIME_DATABASE", "${properties["REALTIME"]}")
         buildConfigField("String", "GOOGLE_LOGIN", "${properties["LOGIN"]}")
-        buildConfigField("String","NATIVE_APP_KEY","${properties["KAKAO_NATIVE_APP_KEY"]}")
+        buildConfigField("String","NATIVE_KEY","${properties["KAKAO_NATIVE_APP_KEY"]}")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -73,15 +72,15 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.preference:preference-ktx:1.2.1")
-    implementation("androidx.activity:activity-ktx:1.8.0")
+    implementation("androidx.activity:activity-ktx:1.8.2")
 
     // add databinding library
-    implementation("androidx.databinding:databinding-runtime:8.1.2")
+    implementation("androidx.databinding:databinding-runtime:8.2.0")
     // chart library::MPAndroidChart. https://github.com/PhilJay/MPAndroidChart.
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     // calendar library::Calendar. https://github.com/kizitonwose/Calendar.
@@ -99,8 +98,8 @@ dependencies {
     // firebase cloud database
     implementation("com.google.firebase:firebase-storage-ktx")
     implementation("com.google.android.gms:play-services-auth:20.7.0")
-    implementation("com.google.firebase:firebase-auth-ktx:22.2.0")
-    implementation("com.google.firebase:firebase-messaging:23.3.1")
+    implementation("com.google.firebase:firebase-auth-ktx:22.3.0")
+    implementation("com.google.firebase:firebase-messaging:23.4.0")
     implementation("com.android.identity:identity-credential-android:20231002")
 
     // Import Room Library
@@ -159,6 +158,6 @@ dependencies {
     implementation ("androidx.compose.ui:ui:1.6.0-beta03")
     implementation ("androidx.activity:activity-compose:1.9.0-alpha01")
     implementation ("androidx.compose.material:material:1.6.0-beta03")
-    implementation ("androidx.compose.ui:ui-tooling:1.6.0-alpha03")
+    implementation ("androidx.compose.ui:ui-tooling:1.6.0-bete03")
 
 }

@@ -15,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AllDayFit"
         tools:targetApi="31">
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="b9bbfa6f81f6762505ae692833839389"/>
@@ -35,7 +36,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
