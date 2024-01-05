@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieAnimationView
 import com.example.alldayfit.MainActivity
 import com.example.alldayfit.R
+import com.example.alldayfit.settings.GoogleSignInPage
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
 
         val handler: Handler = Handler()
         handler.postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, GoogleSignInPage::class.java)
             startActivity(intent)
             finish()
         }, 3000)

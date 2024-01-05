@@ -110,14 +110,14 @@ class GoogleSignInPage : AppCompatActivity() {
     private fun signIn(email: String, password: String) {
 
         if (email.isNotEmpty() && password.isNotEmpty()) {
-            firebaseAuth?.signInWithEmailAndPassword(email, password)
-                ?.addOnCompleteListener(this) { task ->
+            firebaseAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(
                             baseContext, "로그인에 성공 하였습니다.",
                             Toast.LENGTH_SHORT
                         ).show()
-                        moveMainPage(firebaseAuth?.currentUser)
+                        moveMainPage(firebaseAuth.currentUser)
                     } else {
                         Toast.makeText(
                             baseContext, "로그인에 실패 하였습니다.",
