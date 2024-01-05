@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,8 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AllDayFit"
         tools:targetApi="31">
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="MHh2ZFl0emZ4MlFYdG01ejR0SUo6MTpjaQ" />
+        <meta-data
+            android:name="io.fabric.ApiSecret"
+            android:value="GDdboBJEYX_G5J5665QZ63SpUg3kxTi2KKspiOO6IKEGKi4Us4" />
         <activity
-            android:name=".settings.GoogleSignInPage"
+            android:name=".login.google.GoogleSignInPage"
             android:exported="false" />
         <activity
             android:name=".count.CountActivity"

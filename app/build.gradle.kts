@@ -3,10 +3,10 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
     id("kotlin-kapt")
-    // Add the Google services Gradle plugin
     id("com.google.gms.google-services")
     id("androidx.navigation.safeargs.kotlin")
 }
+
 
 android {
     namespace = "com.example.alldayfit"
@@ -21,7 +21,8 @@ android {
     defaultConfig {
         applicationId = "nrplh.Iridescent.alldayfit"
         minSdk = 27
-        targetSdk = 33
+        //noinspection EditedTargetSdkVersion
+        targetSdk = 34
         versionCode = 3
         versionName = "0.3"
 
@@ -50,13 +51,13 @@ android {
 dependencies {
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.10.0")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.preference:preference-ktx:1.2.1")
-    implementation("androidx.activity:activity-ktx:1.8.0")
+    implementation("androidx.activity:activity-ktx:1.8.2")
 
     // add databinding library
-    implementation("androidx.databinding:databinding-runtime:8.1.2")
+    implementation("androidx.databinding:databinding-runtime:8.2.0")
     // chart library::MPAndroidChart. https://github.com/PhilJay/MPAndroidChart.
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     // calendar library::Calendar. https://github.com/kizitonwose/Calendar.
@@ -74,12 +75,15 @@ dependencies {
     // firebase cloud database
     implementation("com.google.firebase:firebase-storage-ktx")
     implementation("com.google.android.gms:play-services-auth:20.7.0")
-    implementation("com.google.firebase:firebase-auth-ktx:22.2.0")
-    implementation("com.google.firebase:firebase-messaging:23.3.1")
+    implementation("com.google.firebase:firebase-auth-ktx:22.3.0")
+    implementation("com.google.firebase:firebase-messaging:23.4.0")
+    implementation("com.google.firebase:firebase-auth:22.3.0")
 
     // Import Room Library
-    val roomVersion = "2.6.0"
+    val roomVersion = "2.6.1"
+    //noinspection GradleDependency
     implementation("androidx.room:room-runtime:$roomVersion")
+    //noinspection GradleDependency
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
     // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$roomVersion")
@@ -96,7 +100,7 @@ dependencies {
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$roomVersion")
     // navigation library
-    val navVersion = "2.7.5"
+    val navVersion = "2.7.6"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
     // Feature module Support
@@ -104,10 +108,12 @@ dependencies {
 
     // test library
     // optional - Test helpers
+    //noinspection GradleDependency
     testImplementation("androidx.room:room-testing:$roomVersion")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    //noinspection GradleDependency
     androidTestImplementation("androidx.navigation:navigation-testing:$navVersion")
 
     //glide
@@ -119,4 +125,10 @@ dependencies {
 
     //lottie
     implementation("com.airbnb.android:lottie:6.1.0")
+    // twitter sdk
+    implementation ("com.android.support:multidex:1.0.3")
+    implementation ("com.twitter.sdk.android:twitter-core:3.3.0")
+    implementation ("com.twitter.sdk.android:twitter:3.3.0")
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+
 }
