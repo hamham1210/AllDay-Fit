@@ -69,22 +69,20 @@ class GoogleSignInPage : AppCompatActivity() {
         facebookLoginBtn.registerCallback(
             callbackManager,
             object : FacebookCallback<LoginResult> {
-                override fun onSuccess(result: LoginResult?) {
-                    Log.d(Tag, "facebook login success")
-                    if (result != null) {
-                        handleFacebookAccessToken(result.accessToken)
-                    }
-                }
 
                 override fun onCancel() {
                     Log.d(Tag, "facebook login cancel")
 
                 }
 
-                override fun onError(error: FacebookException?) {
+                override fun onError(error: FacebookException) {
                     Log.d(Tag, "facebook login error")
                 }
 
+                override fun onSuccess(result: LoginResult) {
+                    Log.d(Tag, "facebook login success")
+                    handleFacebookAccessToken(result.accessToken)
+                }
             }
         )
     }
