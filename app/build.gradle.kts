@@ -21,7 +21,7 @@ android {
     defaultConfig {
         applicationId = "nrplh.Iridescent.alldayfit"
         minSdk = 27
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 3
         versionName = "0.3"
 
