@@ -16,6 +16,7 @@ android {
         // 뷰 바인딩 활성화
         viewBinding = true
         dataBinding = true
+        buildConfig = true
     }
 
     defaultConfig {
@@ -26,6 +27,8 @@ android {
         versionName = "0.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders["facebook_app_id"] = getKey("facebook.app_id")
+        manifestPlaceholders["facebook_client_token"] = getKey("facebook.app_client_token")
     }
 
     buildTypes {
